@@ -1,11 +1,12 @@
-package com.takima.backskeleton.controllers;
+package com.epf.marmitax.controllers;
 
-import com.takima.backskeleton.models.Course;
-import com.takima.backskeleton.services.CourseService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.epf.marmitax.models.Course;
+import com.epf.marmitax.services.CourseService;
 
 import java.util.List;
 

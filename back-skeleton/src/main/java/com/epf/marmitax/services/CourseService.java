@@ -1,8 +1,9 @@
-package com.takima.backskeleton.services;
+package com.epf.marmitax.services;
 
-import com.takima.backskeleton.DAO.CourseDao;
-import com.takima.backskeleton.models.Course;
 import org.springframework.stereotype.Component;
+
+import com.epf.marmitax.DAO.CourseDao;
+import com.epf.marmitax.models.Course;
 
 import java.util.List;
 

@@ -1,9 +1,10 @@
-package com.takima.backskeleton.services;
+package com.epf.marmitax.services;
 
-import com.takima.backskeleton.DAO.MajorDao;
-import com.takima.backskeleton.models.Major;
-import com.takima.backskeleton.models.Student;
 import org.springframework.stereotype.Component;
+
+import com.epf.marmitax.DAO.MajorDao;
+import com.epf.marmitax.models.Major;
+import com.epf.marmitax.models.Student;
 
 import java.util.ArrayList;
 import java.util.List;

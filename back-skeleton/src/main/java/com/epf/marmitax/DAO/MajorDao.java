@@ -1,10 +1,11 @@
-package com.takima.backskeleton.DAO;
+package com.epf.marmitax.DAO;
 
-import com.takima.backskeleton.models.Major;
-import com.takima.backskeleton.models.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.epf.marmitax.models.Major;
+import com.epf.marmitax.models.Student;
 
 import java.util.List;
 

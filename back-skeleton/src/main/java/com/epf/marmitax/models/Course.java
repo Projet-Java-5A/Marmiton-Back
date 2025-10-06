@@ -1,4 +1,4 @@
-package com.takima.backskeleton.models;
+package com.epf.marmitax.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;

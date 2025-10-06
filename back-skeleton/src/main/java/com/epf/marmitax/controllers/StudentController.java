@@ -1,8 +1,5 @@
-package com.takima.backskeleton.controllers;
+package com.epf.marmitax.controllers;
 
-import com.takima.backskeleton.DTO.StudentDto;
-import com.takima.backskeleton.models.Student;
-import com.takima.backskeleton.services.StudentService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.epf.marmitax.DTO.StudentDto;
+import com.epf.marmitax.models.Student;
+import com.epf.marmitax.services.StudentService;
 
 import java.util.List;
 

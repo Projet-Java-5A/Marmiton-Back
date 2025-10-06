@@ -1,8 +1,8 @@
-package com.takima.backskeleton.DTO;
-
-import com.takima.backskeleton.models.Student;
+package com.epf.marmitax.DTO;
 
 import java.io.IOException;
+
+import com.epf.marmitax.models.Student;
 
 public class StudentMapper {
     public static Student fromDto(StudentDto dto, Long id) throws IOException {

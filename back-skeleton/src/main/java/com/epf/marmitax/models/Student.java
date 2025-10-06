@@ -1,4 +1,4 @@
-package com.takima.backskeleton.models;
+package com.epf.marmitax.models;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

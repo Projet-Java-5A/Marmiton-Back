@@ -1,10 +1,10 @@
-package com.takima.backskeleton.DTO;
-
-import com.takima.backskeleton.models.Course;
-import com.takima.backskeleton.models.Major;
+package com.epf.marmitax.DTO;
 
 import java.time.Instant;
 import java.util.List;
+
+import com.epf.marmitax.models.Course;
+import com.epf.marmitax.models.Major;
 public class StudentDto {
     private String firstName;
     private String lastName;
