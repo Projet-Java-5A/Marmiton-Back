@@ -1,5 +1,16 @@
 package com.epf.marmitax.DTO;
 
-public class UserDto {
+import java.util.List;
 
-}
+import com.epf.marmitax.models.Recette;
+
+import lombok.Builder;
+
+@Builder 
+public record UserDto (
+    Long id_user_Dto,
+    Boolean isAdmin_Dto,
+    String nom_user_Dto,
+    String prenom_user_Dto,
+    List<Recette> recettes_Dto
+){}
