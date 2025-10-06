@@ -14,5 +14,7 @@ public class User {
     private Boolean isAdmin_model;
     private String nom_user_model;
     private String prenom_user_model;
+    private String mail_user_model;
+    private String mdp_user_model;
     private List<Recette> recettes_model;
 }
