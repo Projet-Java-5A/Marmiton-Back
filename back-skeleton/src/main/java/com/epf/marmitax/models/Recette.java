@@ -16,4 +16,5 @@ public class Recette {
     private Integer duree_recette_model;
     private Integer difficulte_recette_model;
     private Integer prix_recette_model;
+    private String image_recette_model;
 }
