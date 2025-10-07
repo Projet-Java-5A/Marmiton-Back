@@ -1,10 +1,13 @@
 package com.epf.marmitax.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -24,6 +27,8 @@ public class Ingredient {
     private String nomIngredient;
     private String quantiteIngredient;
     @ManyToOne
-    @JoinColumn(name = "id_categorie_model")
-    private Categorie categorie_ingredient_model;
+    @JoinColumn(name = "id_categorie")
+    private Categorie categorie_ingredient;
+    @ManyToMany(mappedBy = "recettes")
+    private List<Recette> recettesUsingThisIngredient;
 }
