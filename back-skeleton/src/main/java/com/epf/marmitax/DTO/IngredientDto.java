@@ -7,8 +7,8 @@ import lombok.Builder;
 
 @Builder
 public record IngredientDto(
-    Long id_ingredient_Dto,
-    String nom_ingredient_Dto,
-    String quantitee_ingredient_Dto,
-    Categorie categorie_Dto
+    Long idIngredientDto,
+    String nomIngredientDto,
+    String quantiteeIngredientDto,
+    Categorie categorieDto
 ){}

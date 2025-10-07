@@ -10,13 +10,13 @@ import java.util.List;
 
 @Builder
 public record RecetteDto(
-    Long id_recette_Dto,
-    String nom_recette_Dto,
-    String image_recette_Dto,
-    Integer duree_recette_Dto,
-    Integer prix_recette_Dto,
-    Integer difficulte_recette_Dto,
-    String contenu_recette_Dto,
-    List<Ustensile> ustensiles_Dto,
-    List<Ingredient> ingredients_Dto
+    Long idRecetteDto,
+    String nomRecetteDto,
+    String imageRecetteDto,
+    Integer dureeRecetteDto,
+    Integer prixRecetteDto,
+    Integer difficulteRecetteDto,
+    String contenuRecetteDto,
+    List<Ustensile> ustensilesDto,
+    List<Ingredient> ingredientsDto
 ){}

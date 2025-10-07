@@ -7,16 +7,16 @@ import com.epf.marmitax.models.Ingredient;
 public class IngredientMapper {
     public static Ingredient fromDto(IngredientDto dto, Long id) throws IOException {
         return Ingredient.builder()
-                .id_ingredient_model(id)
-                .nom_ingredient_model(dto.nom_ingredient_Dto())
-                .quantite_ingredient_model(dto.quantitee_ingredient_Dto())
+                .idIngredientModel(id)
+                .nomIngredientModel(dto.nomIngredientDto())
+                .quantiteIngredientModel(dto.quantiteeIngredientDto())
                 .build();
     }
 
     public static IngredientDto toDto(Ingredient ingredient){
         return IngredientDto.builder()
-                .id_ingredient_Dto(ingredient.getId_ingredient_model())
-                .nom_ingredient_Dto(ingredient.getNom_ingredient_model())
+                .idIngredientDto(ingredient.getIdIngredientModel())
+                .nomIngredientDto(ingredient.getNomIngredientModel())
                 .build();
     }
 }

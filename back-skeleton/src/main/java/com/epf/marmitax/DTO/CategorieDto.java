@@ -4,6 +4,6 @@ import lombok.Builder;
 
 @Builder
 public record CategorieDto(
-    Long id_categorie_Dto,
-    String nom_categorie_Dto
+    Long idCategorieDto,
+    String nomCategorieDto
 ) {}

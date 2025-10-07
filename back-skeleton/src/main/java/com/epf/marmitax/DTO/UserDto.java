@@ -8,12 +8,12 @@ import lombok.Builder;
 
 @Builder 
 public record UserDto (
-    Long id_user_Dto,
-    Boolean isAdmin_Dto,
-    String nom_user_Dto,
-    String prenom_user_Dto,
-    String mail_user_Dto,
-    String mdp_user_Dto,
-    List<Recette> recettes_Dto
+    Long idUserDto,
+    Boolean isAdminDto,
+    String nomUserDto,
+    String prenomUserDto,
+    String mailUserDto,
+    String mdpUserDto,
+    List<Recette> recettesDto
 ){}
 
