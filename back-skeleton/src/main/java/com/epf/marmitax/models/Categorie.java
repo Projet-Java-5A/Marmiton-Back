@@ -20,8 +20,8 @@ import lombok.Setter;
 public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idCategorieModel;
-    private String nomCategorieModel;
+    private Long idCategorie;
+    private String nomCategorie;
     @OneToMany(mappedBy = "id_categorie_model")
-    private List<Ingredient> ingredientsDansCategorieModel;
+    private List<Ingredient> ingredientsDansCategorie;
 }

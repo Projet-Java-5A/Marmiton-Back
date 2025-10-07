@@ -10,11 +10,11 @@ import lombok.Setter;
 
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class User {
-    private Long idUserModel;
-    private Boolean isAdminModel;
-    private String nomUserModel;
-    private String prenomUserModel;
-    private String mailUserModel;
-    private String mdpUserModel;
-    private List<Recette> recettesModel;
+    private Long idUser;
+    private Boolean isAdmin;
+    private String nomUser;
+    private String prenomUser;
+    private String mailUser;
+    private String mdpUser;
+    private List<Recette> recettes;
 }

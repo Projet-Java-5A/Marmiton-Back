@@ -7,25 +7,25 @@ import com.epf.marmitax.models.User;
 public class UserMapper {
     public static User fromDto(UserDto dto, Long id) throws IOException {
         return User.builder()
-            .idUserModel(id)
-            .isAdminModel(dto.isAdminDto())
-            .nomUserModel(dto.nomUserDto())
-            .prenomUserModel(dto.prenomUserDto())
-            .mailUserModel(dto.mailUserDto())
-            .mdpUserModel(dto.mdpUserDto())
-            .recettesModel(dto.recettesDto())
+            .idUser(id)
+            .isAdmin(dto.isAdminDto())
+            .nomUser(dto.nomUserDto())
+            .prenomUser(dto.prenomUserDto())
+            .mailUser(dto.mailUserDto())
+            .mdpUser(dto.mdpUserDto())
+            .recettes(dto.recettesDto())
             .build();
     }
 
     public static UserDto toDto(User user){
         return UserDto.builder()
-                .idUserDto(user.getIdUserModel())
-                .isAdminDto(user.getIsAdminModel())
-                .nomUserDto(user.getNomUserModel())
-                .prenomUserDto(user.getPrenomUserModel())
-                .mailUserDto(user.getMailUserModel())
-                .mdpUserDto(user.getMdpUserModel())
-                .recettesDto(user.getRecettesModel())
+                .idUserDto(user.getIdUser())
+                .isAdminDto(user.getIsAdmin())
+                .nomUserDto(user.getNomUser())
+                .prenomUserDto(user.getPrenomUser())
+                .mailUserDto(user.getMailUser())
+                .mdpUserDto(user.getMdpUser())
+                .recettesDto(user.getRecettes())
                 .build();
     }
 }

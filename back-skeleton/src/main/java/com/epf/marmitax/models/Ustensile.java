@@ -8,6 +8,6 @@ import lombok.Setter;
 
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Ustensile {
-    private Long idUstensileModel;
-    private String nomUstensileModel;
+    private Long idUstensile;
+    private String nomUstensile;
 }

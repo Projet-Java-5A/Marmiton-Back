@@ -10,13 +10,13 @@ import lombok.Setter;
 
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Recette {
-    private Long idRecetteModel;
-    private String nomRecetteModel;
-    private List<Ingredient> ingredientsModel;
-    private List<Ustensile> ustensilesModel;
-    private Integer dureeRecetteModel;
-    private Integer difficulteRecetteModel;
-    private Integer prixRecetteModel;
-    private String imageRecetteModel;
-    private String contenuRecetteModel; 
+    private Long idRecette;
+    private String nomRecette;
+    private List<Ingredient> ingredients;
+    private List<Ustensile> ustensiles;
+    private Integer dureeRecette;
+    private Integer difficulteRecette;
+    private Integer prixRecette;
+    private String imageRecette;
+    private String contenuRecette; 
 }

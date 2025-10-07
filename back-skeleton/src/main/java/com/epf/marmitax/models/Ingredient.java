@@ -20,10 +20,10 @@ import lombok.Setter;
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idIngredientModel;
-    private String nomIngredientModel;
-    private String quantiteIngredientModel;
+    private Long idIngredient;
+    private String nomIngredient;
+    private String quantiteIngredient;
     @ManyToOne
-    @JoinColumn(name = "categorie_id")
+    @JoinColumn(name = "id_categorie_model")
     private Categorie categorie_ingredient_model;
 }
