@@ -44,5 +44,5 @@ public class Recette {
     private String contenuRecette;
     @ManyToOne
     @JoinColumn(name = "id_user")
-    private User user;
+    private User utilisateurs;
 }

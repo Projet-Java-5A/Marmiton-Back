@@ -10,7 +10,7 @@ public class IngredientMapper {
                 .idIngredient(dto.idIngredientDto())
                 .nomIngredient(dto.nomIngredientDto())
                 .quantiteIngredient(dto.quantiteeIngredientDto())
-                .categorieIngredient(dto.categorieIngredientDto())
+                .categorie_ingredient(dto.categorieIngredientDto())
                 .recettesUsingThisIngredient(dto.recettesUsingThisIngredientDto().stream().map(RecetteMapper::fromDto).collect(Collectors.toList()))
                 .build();
     }
@@ -20,7 +20,7 @@ public class IngredientMapper {
                 .idIngredientDto(ingredient.getIdIngredient())
                 .nomIngredientDto(ingredient.getNomIngredient())
                 .quantiteeIngredientDto(ingredient.getQuantiteIngredient())
-                .categorieIngredientDto(ingredient.getCategorieIngredient())
+                .categorieIngredientDto(ingredient.getCategorie_ingredient())
                 .recettesUsingThisIngredientDto(ingredient.getRecettesUsingThisIngredient().stream().map(RecetteMapper::toDto).collect(Collectors.toList()))
                 .build();
     }

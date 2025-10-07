@@ -28,7 +28,7 @@ public class Ingredient {
     private String quantiteIngredient;
     @ManyToOne
     @JoinColumn(name = "id_categorie")
-    private Categorie categorieIngredient;
-    @ManyToMany(mappedBy = "recettes")
+    private Categorie categorie_ingredient; // On met en snake_case pour correspondre à la BDD car ça bug sinon :(
+    @ManyToMany(mappedBy = "ingredients")
     private List<Recette> recettesUsingThisIngredient;
 }
