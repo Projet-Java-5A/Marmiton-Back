@@ -12,5 +12,8 @@ public record UserDto (
     Boolean isAdmin_Dto,
     String nom_user_Dto,
     String prenom_user_Dto,
+    String mail_user_Dto,
+    String mdp_user_Dto,
     List<Recette> recettes_Dto
 ){}
+
