@@ -1,11 +1,11 @@
 package com.epf.marmitax.DTO;
 
-import java.io.IOException;
+import java.util.stream.Collectors;
 
 import com.epf.marmitax.models.User;
 
 public class UserMapper {
-    public static User fromDto(UserDto dto, Long id) throws IOException {
+    public static User fromDto(UserDto dto, Long id) {
         return User.builder()
             .idUser(id)
             .isAdmin(dto.isAdminDto())
@@ -13,7 +13,7 @@ public class UserMapper {
             .prenomUser(dto.prenomUserDto())
             .mailUser(dto.mailUserDto())
             .mdpUser(dto.mdpUserDto())
-            .recettes(dto.recettesDto())
+            .recettes(dto.recettesDto().stream().map(RecetteMapper::fromDto).collect(Collectors.toList()))
             .build();
     }
 
@@ -25,7 +25,7 @@ public class UserMapper {
                 .prenomUserDto(user.getPrenomUser())
                 .mailUserDto(user.getMailUser())
                 .mdpUserDto(user.getMdpUser())
-                .recettesDto(user.getRecettes())
+                .recettesDto(user.getRecettes().stream().map(RecetteMapper::toDto).collect(Collectors.toList()))
                 .build();
     }
 }

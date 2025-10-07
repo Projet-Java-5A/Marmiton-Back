@@ -1,5 +1,7 @@
 package com.epf.marmitax.DTO;
 
+import java.util.List;
+
 import com.epf.marmitax.models.Categorie;
 
 
@@ -10,5 +12,6 @@ public record IngredientDto(
     Long idIngredientDto,
     String nomIngredientDto,
     String quantiteeIngredientDto,
-    Categorie categorieDto
+    Categorie categorieIngredientDto,
+    List<RecetteDto> recettesUsingThisIngredientDto
 ){}

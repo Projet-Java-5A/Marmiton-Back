@@ -44,18 +44,18 @@ public class UstensileService {
      
     // Ajouter une nouvelle ustensile
     @Transactional
-    public void addUstensile(UstensileDto ustensileDto) throws IOException {
+    public void addUstensile(UstensileDto ustensileDto) {
         Ustensile ustensile;
-        ustensile = UstensileMapper.fromDto(ustensileDto, null);
+        ustensile = UstensileMapper.fromDto(ustensileDto);
         ustensileDao.save(ustensile);  
     }
 
     // Modifier une ustensile
     @Transactional
-    public void updateUstensile(UstensileDto ustensileDto, Long id) throws IOException {
+    public void updateUstensile(UstensileDto ustensileDto, Long id) {
         ustensileDao.findById(id).orElseThrow(() -> new NoSuchElementException("La ustensile n'existe pas"));
         Ustensile ustensile;
-        ustensile = UstensileMapper.fromDto(ustensileDto, id);
+        ustensile = UstensileMapper.fromDto(ustensileDto);
         ustensileDao.save(ustensile);
     }
 

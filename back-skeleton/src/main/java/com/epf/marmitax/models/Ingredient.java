@@ -28,7 +28,7 @@ public class Ingredient {
     private String quantiteIngredient;
     @ManyToOne
     @JoinColumn(name = "id_categorie")
-    private Categorie categorie_ingredient;
+    private Categorie categorieIngredient;
     @ManyToMany(mappedBy = "recettes")
     private List<Recette> recettesUsingThisIngredient;
 }

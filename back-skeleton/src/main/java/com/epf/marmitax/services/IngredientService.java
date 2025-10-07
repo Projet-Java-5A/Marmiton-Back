@@ -45,16 +45,16 @@ public class IngredientService {
     @Transactional
     public void addIngredient(IngredientDto ingredientDto) throws IOException {
         Ingredient ingredient;
-        ingredient = IngredientMapper.fromDto(ingredientDto, null);
+        ingredient = IngredientMapper.fromDto(ingredientDto);
         ingredientDao.save(ingredient);  
     }
 
     // Modifier un ingrédient
     @Transactional
-    public void updateIngredient(IngredientDto ingredientDto, Long id) throws IOException {
-        ingredientDao.findById(id).orElseThrow(() -> new NoSuchElementException("L'ingrédient n'existe pas Evannnnnnnnnnnnn"));
+    public void updateIngredient(IngredientDto ingredientDto) {
+        ingredientDao.findById(ingredientDto.idIngredientDto()).orElseThrow(() -> new NoSuchElementException("L'ingrédient n'existe pas Evannnnnnnnnnnnn"));
         Ingredient ingredient;
-        ingredient = IngredientMapper.fromDto(ingredientDto, id);
+        ingredient = IngredientMapper.fromDto(ingredientDto);
         ingredientDao.save(ingredient);
     }
 

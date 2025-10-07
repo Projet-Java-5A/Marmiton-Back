@@ -22,6 +22,6 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCategorie;
     private String nomCategorie;
-    @OneToMany(mappedBy = "id_categorie")
+    @OneToMany(mappedBy = "categorie_ingredient")
     private List<Ingredient> ingredientsDansCategorie;
 }

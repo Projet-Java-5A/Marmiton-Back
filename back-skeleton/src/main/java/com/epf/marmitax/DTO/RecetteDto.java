@@ -1,10 +1,6 @@
 package com.epf.marmitax.DTO;
 
-import com.epf.marmitax.models.Ustensile;
-
 import lombok.Builder;
-
-import com.epf.marmitax.models.Ingredient;
 
 import java.util.List;
 
@@ -12,11 +8,11 @@ import java.util.List;
 public record RecetteDto(
     Long idRecetteDto,
     String nomRecetteDto,
-    String imageRecetteDto,
+    List<IngredientDto> ingredientsDto,
+    List<UstensileDto> ustensilesDto,
     Integer dureeRecetteDto,
-    Integer prixRecetteDto,
     Integer difficulteRecetteDto,
-    String contenuRecetteDto,
-    List<Ustensile> ustensilesDto,
-    List<Ingredient> ingredientsDto
+    Integer prixRecetteDto,
+    String imageRecetteDto,
+    String contenuRecetteDto
 ){}

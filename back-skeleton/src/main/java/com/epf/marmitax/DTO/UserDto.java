@@ -2,8 +2,6 @@ package com.epf.marmitax.DTO;
 
 import java.util.List;
 
-import com.epf.marmitax.models.Recette;
-
 import lombok.Builder;
 
 @Builder 
@@ -14,6 +12,6 @@ public record UserDto (
     String prenomUserDto,
     String mailUserDto,
     String mdpUserDto,
-    List<Recette> recettesDto
+    List<RecetteDto> recettesDto
 ){}
 

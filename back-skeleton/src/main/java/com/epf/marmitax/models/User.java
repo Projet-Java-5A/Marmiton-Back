@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "utilisateurs")
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class User {
     @Id
@@ -26,6 +26,6 @@ public class User {
     private String prenomUser;
     private String mailUser;
     private String mdpUser;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "utilisateurs")
     private List<Recette> recettes;
 }

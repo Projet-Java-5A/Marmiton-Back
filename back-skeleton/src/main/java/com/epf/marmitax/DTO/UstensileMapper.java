@@ -1,13 +1,11 @@
 package com.epf.marmitax.DTO;
 
-import java.io.IOException;
-
 import com.epf.marmitax.models.Ustensile;
 
 public class UstensileMapper {
-    public static Ustensile fromDto(UstensileDto dto, Long id) throws IOException {
+    public static Ustensile fromDto(UstensileDto dto) {
         return Ustensile.builder()
-                .idUstensile(id)
+                .idUstensile(dto.idUstensileDto())
                 .nomUstensile(dto.nomUstensileDto())
                 .build();
     }

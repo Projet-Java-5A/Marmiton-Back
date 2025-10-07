@@ -42,6 +42,6 @@ public class IngredientController {
 
     @PostMapping("/{id}")
     public void updateIngredient(@RequestBody IngredientDto ingredientDto, @PathVariable Long id) throws IOException {
-        ingredientService.updateIngredient(ingredientDto, id);
+        ingredientService.updateIngredient(ingredientDto);
     }
 }

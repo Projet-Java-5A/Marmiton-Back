@@ -45,7 +45,7 @@ public class RecetteService {
     @Transactional
     public void addRecette(RecetteDto recetteDto) throws IOException {
         Recette recette;
-        recette = RecetteMapper.fromDto(recetteDto, null);
+        recette = RecetteMapper.fromDto(recetteDto);
         recetteDao.save(recette);  
     }
 
@@ -54,7 +54,7 @@ public class RecetteService {
     public void updateRecette(RecetteDto recetteDto, Long id) throws IOException {
         recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
         Recette recette;
-        recette = RecetteMapper.fromDto(recetteDto, id);
+        recette = RecetteMapper.fromDto(recetteDto);
         recetteDao.save(recette);
     }
 
