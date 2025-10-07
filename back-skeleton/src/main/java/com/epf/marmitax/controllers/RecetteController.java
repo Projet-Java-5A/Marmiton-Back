@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epf.marmitax.DTO.RecetteDto;
 import com.epf.marmitax.models.Recette;
 import com.epf.marmitax.services.RecetteService;
 
-import java.util.List;
+import java.io.IOException;
 
 @CrossOrigin
 @RequestMapping("recettes")
@@ -37,12 +36,12 @@ public class RecetteController {
     }
 
     @PostMapping("")
-    public void addRecette(@RequestBody RecetteDto recetteDto) {
+    public void addRecette(@RequestBody RecetteDto recetteDto) throws IOException {
         recetteService.addRecette(recetteDto);
     }
 
     @PostMapping("/{id}")
-    public void updateRecette(@RequestBody RecetteDto recetteDto, @PathVariable Long id) {
+    public void updateRecette(@RequestBody RecetteDto recetteDto, @PathVariable Long id) throws IOException {
         recetteService.updateRecette(recetteDto, id);
     }
 }

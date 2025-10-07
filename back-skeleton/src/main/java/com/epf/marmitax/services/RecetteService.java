@@ -3,12 +3,16 @@ package com.epf.marmitax.services;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.RecetteDao;
+import com.epf.marmitax.DTO.RecetteDto;
+import com.epf.marmitax.DTO.RecetteMapper;
 import com.epf.marmitax.models.Recette;
 
 import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.util.NoSuchElementException;
 
 @Service
 public class RecetteService {
@@ -39,7 +43,7 @@ public class RecetteService {
 
     // Ajouter une nouvelle recette
     @Transactional
-    public void addRecette(RecetteDto recetteDto){
+    public void addRecette(RecetteDto recetteDto) throws IOException {
         Recette recette;
         recette = RecetteMapper.fromDto(recetteDto, null);
         recetteDao.save(recette);  
@@ -47,7 +51,7 @@ public class RecetteService {
 
     // Modifier une recette
     @Transactional
-    public void updateRecette(RecetteDto recetteDto, Long id) {
+    public void updateRecette(RecetteDto recetteDto, Long id) throws IOException {
         recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
         Recette recette;
         recette = RecetteMapper.fromDto(recetteDto, id);

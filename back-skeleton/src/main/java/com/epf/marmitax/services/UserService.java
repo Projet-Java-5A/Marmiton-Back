@@ -3,11 +3,16 @@ package com.epf.marmitax.services;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.UserDao;
+import com.epf.marmitax.DTO.UserDto;
+import com.epf.marmitax.DTO.UserMapper;
 import com.epf.marmitax.models.User;
 
 import jakarta.transaction.Transactional;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 @Service
 
 public class UserService {
@@ -39,7 +44,7 @@ public class UserService {
      
     // Ajouter une nouvelle user
     @Transactional
-    public void addUser(UserDto userDto){
+    public void addUser(UserDto userDto) throws IOException {
         User user;
         user = UserMapper.fromDto(userDto, null);
         userDao.save(user);  
@@ -47,7 +52,7 @@ public class UserService {
 
     // Modifier une user
     @Transactional
-    public void updateUser(UserDto userDto, Long id) {
+    public void updateUser(UserDto userDto, Long id) throws IOException {
         userDao.findById(id).orElseThrow(() -> new NoSuchElementException("Le user n'existe pas"));
         User user;
         user = UserMapper.fromDto(userDto, id);

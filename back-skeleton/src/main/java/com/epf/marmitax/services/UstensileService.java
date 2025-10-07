@@ -3,11 +3,15 @@ package com.epf.marmitax.services;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.UstensileDao;
+import com.epf.marmitax.DTO.UstensileDto;
+import com.epf.marmitax.DTO.UstensileMapper;
 import com.epf.marmitax.models.Ustensile;
 
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
@@ -40,7 +44,7 @@ public class UstensileService {
      
     // Ajouter une nouvelle ustensile
     @Transactional
-    public void addUstensile(UstensileDto ustensileDto){
+    public void addUstensile(UstensileDto ustensileDto) throws IOException {
         Ustensile ustensile;
         ustensile = UstensileMapper.fromDto(ustensileDto, null);
         ustensileDao.save(ustensile);  
@@ -48,7 +52,7 @@ public class UstensileService {
 
     // Modifier une ustensile
     @Transactional
-    public void updateUstensile(UstensileDto ustensileDto, Long id) {
+    public void updateUstensile(UstensileDto ustensileDto, Long id) throws IOException {
         ustensileDao.findById(id).orElseThrow(() -> new NoSuchElementException("La ustensile n'existe pas"));
         Ustensile ustensile;
         ustensile = UstensileMapper.fromDto(ustensileDto, id);

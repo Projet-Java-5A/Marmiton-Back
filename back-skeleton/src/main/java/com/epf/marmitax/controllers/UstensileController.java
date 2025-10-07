@@ -1,5 +1,7 @@
 package com.epf.marmitax.controllers;
 
+import java.io.IOException;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,14 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epf.marmitax.DTO.UstensileDto;
 import com.epf.marmitax.models.Ustensile;
 import com.epf.marmitax.services.UstensileService;
-
-import java.util.List;
 
 @CrossOrigin
 @RequestMapping("ustensiles")
@@ -37,12 +36,12 @@ public class UstensileController {
     }
 
     @PostMapping("")
-    public void addUstensile(@RequestBody UstensileDto ustensileDto) {
+    public void addUstensile(@RequestBody UstensileDto ustensileDto) throws IOException {
         ustensileService.addUstensile(ustensileDto);
     }
 
     @PostMapping("/{id}")
-    public void updateUstensile(@RequestBody UstensileDto ustensileDto, @PathVariable Long id) {
+    public void updateUstensile(@RequestBody UstensileDto ustensileDto, @PathVariable Long id) throws IOException {
         ustensileService.updateUstensile(ustensileDto, id);
     }
 }
