@@ -3,14 +3,14 @@ package com.epf.marmitax.services;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.IngredientDao;
-import com.epf.marmitax.DTO.IngredientMapper;
+//import com.epf.marmitax.DTO.IngredientMapper;
 import com.epf.marmitax.models.Ingredient;
 
 import jakarta.transaction.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.io.IOException;
+// import java.util.NoSuchElementException;
+// import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
@@ -40,6 +40,7 @@ public class IngredientService {
         ingredientDao.deleteById(id);
     }
 
+    /* 
     // Ajouter un nouvel ingrédient
     @Transactional
     public void addIngredient(IngredientDto ingredientDto){
@@ -58,7 +59,7 @@ public class IngredientService {
     }
 
     // Rechercher un ingrédient par catégorie
-    public List<Ingredient> searchByCategorie(int categorieId) {
-        return ingredientDao.findBy(categorieId);
-    }
+    // public List<Ingredient> searchByCategorie(int categorieId) {
+    //    return ingredientDao.findByCategorieId(categorieId);
+    //}*/
 }
