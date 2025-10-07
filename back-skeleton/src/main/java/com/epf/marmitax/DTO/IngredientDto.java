@@ -6,7 +6,7 @@ import com.epf.marmitax.models.Categorie;
 import lombok.Builder;
 
 @Builder
-public record IngrediantDto(
+public record IngredientDto(
     Long id_ingredient_Dto,
     String nom_ingredient_Dto,
     String quantitee_ingredient_Dto,
