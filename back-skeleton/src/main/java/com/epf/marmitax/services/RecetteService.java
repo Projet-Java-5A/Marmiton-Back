@@ -37,7 +37,6 @@ public class RecetteService {
         recetteDao.deleteById(id);
     }
 
-    /* 
     // Ajouter une nouvelle recette
     @Transactional
     public void addRecette(RecetteDto recetteDto){
@@ -58,5 +57,5 @@ public class RecetteService {
     // Rechercher une recette par catégorie
     // public List<Recette> searchByCategorie(int categorieId) {
     //    return recetteDao.findByCategorieId(categorieId);
-    //}*/
+    //}
 }

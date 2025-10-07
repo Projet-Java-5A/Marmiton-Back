@@ -37,7 +37,7 @@ public class UstensileService {
         ustensileDao.deleteById(id);
     }
 
-    /* 
+     
     // Ajouter une nouvelle ustensile
     @Transactional
     public void addUstensile(UstensileDto ustensileDto){
@@ -58,5 +58,5 @@ public class UstensileService {
     // Rechercher une ustensile par catégorie
     // public List<Ustensile> searchByCategorie(int categorieId) {
     //    return ustensileDao.findByCategorieId(categorieId);
-    //}*/
+    //}
 }

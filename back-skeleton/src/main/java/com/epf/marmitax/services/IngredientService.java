@@ -39,8 +39,7 @@ public class IngredientService {
     public void deleteById(Long id){
         ingredientDao.deleteById(id);
     }
-
-    /* 
+ 
     // Ajouter un nouvel ingrédient
     @Transactional
     public void addIngredient(IngredientDto ingredientDto){
@@ -61,5 +60,5 @@ public class IngredientService {
     // Rechercher un ingrédient par catégorie
     // public List<Ingredient> searchByCategorie(int categorieId) {
     //    return ingredientDao.findByCategorieId(categorieId);
-    //}*/
+    //}
 }

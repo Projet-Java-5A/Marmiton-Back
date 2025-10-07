@@ -36,7 +36,7 @@ public class UserService {
         userDao.deleteById(id);
     }
 
-    /* 
+     
     // Ajouter une nouvelle user
     @Transactional
     public void addUser(UserDto userDto){
@@ -57,5 +57,5 @@ public class UserService {
     // Rechercher une user par catégorie
     // public List<User> searchByCategorie(int categorieId) {
     //    return userDao.findByCategorieId(categorieId);
-    //}*/
+    //}
 }
