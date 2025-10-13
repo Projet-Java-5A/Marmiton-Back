@@ -14,6 +14,7 @@ import com.epf.marmitax.models.Recette;
 import com.epf.marmitax.services.RecetteService;
 
 import java.io.IOException;
+import java.util.List;
 
 @CrossOrigin
 @RequestMapping("recettes")
@@ -23,6 +24,11 @@ public class RecetteController {
 
     public RecetteController(RecetteService recetteService) {
         this.recetteService = recetteService;
+    }
+
+    @GetMapping("")
+    public List<Recette> getAllIngredients() {
+        return recetteService.findAll();
     }
 
     @GetMapping("/{id}")

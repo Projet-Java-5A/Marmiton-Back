@@ -1,6 +1,7 @@
 package com.epf.marmitax.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,11 @@ public class UstensileController {
 
     public UstensileController(UstensileService ustensileService) {
         this.ustensileService = ustensileService;
+    }
+
+    @GetMapping("")
+    public List<Ustensile> getAllUstensiles() {
+        return ustensileService.findAll();
     }
 
     @GetMapping("/{id}")
