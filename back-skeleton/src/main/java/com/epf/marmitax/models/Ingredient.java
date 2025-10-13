@@ -25,7 +25,6 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idIngredient;
     private String nomIngredient;
-    private String quantiteIngredient;
     @ManyToOne
     @JoinColumn(name = "id_categorie")
     private Categorie categorie_ingredient; // On met en snake_case pour correspondre à la BDD car ça bug sinon :(

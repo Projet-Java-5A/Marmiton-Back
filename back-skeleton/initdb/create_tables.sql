@@ -20,7 +20,6 @@ CREATE TABLE ustensile (
 CREATE TABLE ingredient (
     id_ingredient BIGINT PRIMARY KEY,
     nom_ingredient VARCHAR(255),
-    quantite_ingredient VARCHAR(255),
     id_categorie BIGINT,
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie)
 );
@@ -40,6 +39,7 @@ CREATE TABLE recette (
 CREATE TABLE contenir (
     id_recette BIGINT,
     id_ingredient BIGINT,
+    quantité_ingredient VARCHAR(255),
     PRIMARY KEY (id_recette, id_ingredient),
     FOREIGN KEY (id_recette) REFERENCES recette (id_recette),
     FOREIGN KEY (id_ingredient) REFERENCES ingredient (id_ingredient)
