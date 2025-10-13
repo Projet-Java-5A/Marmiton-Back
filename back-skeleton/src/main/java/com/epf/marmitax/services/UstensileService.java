@@ -21,7 +21,6 @@ public class UstensileService {
         this.ustensileDao = ustensileDao;
     }
 
-    // Retourner toutes les ustensiles de la BDD
     public List<Ustensile> findAll() {
         Iterable<Ustensile> it = ustensileDao.findAll();
         List <Ustensile> ustensiles = new ArrayList<>();
@@ -29,19 +28,15 @@ public class UstensileService {
         return ustensiles;
     }
 
-    // Retourner une ustensile par un Id
     public Ustensile getById(Long id){
         return ustensileDao.findById(id).orElseThrow();
     }
 
-    // Supprimer une ustensile par son id
-    @Transactional // Réalisé par une transaction
+    @Transactional
     public void deleteById(Long id){
         ustensileDao.deleteById(id);
     }
 
-     
-    // Ajouter une nouvelle ustensile
     @Transactional
     public void addUstensile(UstensileDto ustensileDto) {
         Ustensile ustensile;
@@ -49,7 +44,6 @@ public class UstensileService {
         ustensileDao.save(ustensile);  
     }
 
-    // Modifier une ustensile
     @Transactional
     public void updateUstensile(UstensileDto ustensileDto, Long id) {
         ustensileDao.findById(id).orElseThrow(() -> new NoSuchElementException("La ustensile n'existe pas"));
@@ -58,7 +52,7 @@ public class UstensileService {
         ustensileDao.save(ustensile);
     }
 
-    // Rechercher une ustensile par catégorie
+    // TODO Rechercher une ustensile par catégorie
     // public List<Ustensile> searchByCategorie(int categorieId) {
     //    return ustensileDao.findByCategorieId(categorieId);
     //}

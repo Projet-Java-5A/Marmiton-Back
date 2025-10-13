@@ -1,13 +1,11 @@
 package com.epf.marmitax.DTO;
 
-import java.io.IOException;
-
 import com.epf.marmitax.models.Categorie;
 
 public class CategorieMapper {
-    public static Categorie fromDto(CategorieDto dto, Long id) throws IOException {
+    public static Categorie fromDto(CategorieDto dto) {
         return Categorie.builder()
-                .idCategorie(id)
+                .idCategorie(dto.idCategorieDto())
                 .nomCategorie(dto.nomCategorieDto())
                 .build();
     }
@@ -15,6 +13,7 @@ public class CategorieMapper {
     public static CategorieDto toDto(Categorie categorie){
         return CategorieDto.builder()
                 .idCategorieDto(categorie.getIdCategorie())
+                .nomCategorieDto(categorie.getNomCategorie())
                 .build();
     }
 }

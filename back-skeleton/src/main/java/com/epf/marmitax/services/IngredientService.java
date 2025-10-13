@@ -22,7 +22,6 @@ public class IngredientService {
         this.ingredientDao = ingredientDao;
     }
 
-    // Retourner tous les ingrédients de la BDD
     public List<Ingredient> findAll() {
         Iterable<Ingredient> it = ingredientDao.findAll();
         List <Ingredient> ingredients = new ArrayList<>();
@@ -30,26 +29,21 @@ public class IngredientService {
         return ingredients;
     }
 
-    // Retourner un ingredient par un Id
     public Ingredient getById(Long id){
         return ingredientDao.findById(id).orElseThrow();
     }
 
-    // Supprimer un ingrédient par son id
     @Transactional // Réalisé par une transaction
     public void deleteById(Long id){
         ingredientDao.deleteById(id);
     }
  
-    // Ajouter un nouvel ingrédient
     @Transactional
     public void addIngredient(IngredientDto ingredientDto) throws IOException {
-        Ingredient ingredient;
-        ingredient = IngredientMapper.fromDto(ingredientDto);
+        Ingredient ingredient = IngredientMapper.fromDto(ingredientDto);
         ingredientDao.save(ingredient);  
     }
 
-    // Modifier un ingrédient
     @Transactional
     public void updateIngredient(IngredientDto ingredientDto) {
         ingredientDao.findById(ingredientDto.idIngredientDto()).orElseThrow(() -> new NoSuchElementException("L'ingrédient n'existe pas Evannnnnnnnnnnnn"));
@@ -58,7 +52,7 @@ public class IngredientService {
         ingredientDao.save(ingredient);
     }
 
-    // Rechercher un ingrédient par catégorie
+    // TODO Rechercher un ingrédient par catégorie
     // public List<Ingredient> searchByCategorie(int categorieId) {
     //    return ingredientDao.findByCategorieId(categorieId);
     //}

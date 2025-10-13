@@ -11,7 +11,6 @@ import lombok.Builder;
 public record IngredientDto(
     Long idIngredientDto,
     String nomIngredientDto,
-    String quantiteeIngredientDto,
     Categorie categorieIngredientDto,
     List<RecetteDto> recettesUsingThisIngredientDto
 ){}

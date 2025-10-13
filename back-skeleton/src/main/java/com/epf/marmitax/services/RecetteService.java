@@ -22,7 +22,6 @@ public class RecetteService {
         this.recetteDao = recetteDao;
     }
 
-    // Retourner toutes les recettes de la BDD
     public List<Recette> findAll() {
         Iterable<Recette> it = recetteDao.findAll();
         List <Recette> recettes = new ArrayList<>();
@@ -30,18 +29,15 @@ public class RecetteService {
         return recettes;
     }
 
-    // Retourner une recette par un Id
     public Recette getById(Long id){
         return recetteDao.findById(id).orElseThrow();
     }
 
-    // Supprimer une recette par son id
-    @Transactional // Réalisé par une transaction
+    @Transactional
     public void deleteById(Long id){
         recetteDao.deleteById(id);
     }
 
-    // Ajouter une nouvelle recette
     @Transactional
     public void addRecette(RecetteDto recetteDto) throws IOException {
         Recette recette;
@@ -49,7 +45,6 @@ public class RecetteService {
         recetteDao.save(recette);  
     }
 
-    // Modifier une recette
     @Transactional
     public void updateRecette(RecetteDto recetteDto, Long id) throws IOException {
         recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
@@ -58,7 +53,7 @@ public class RecetteService {
         recetteDao.save(recette);
     }
 
-    // Rechercher une recette par catégorie
+    // TODO Rechercher une recette par catégorie
     // public List<Recette> searchByCategorie(int categorieId) {
     //    return recetteDao.findByCategorieId(categorieId);
     //}
