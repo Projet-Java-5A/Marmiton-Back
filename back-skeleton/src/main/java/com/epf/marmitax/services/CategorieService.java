@@ -33,7 +33,7 @@ public class CategorieService {
         return categorieDao.findById(id).orElseThrow();
     }
 
-    @Transactional // Réalisé par une transaction
+    @Transactional
     public void deleteById(Long id){
         categorieDao.deleteById(id);
     }
