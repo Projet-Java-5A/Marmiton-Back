@@ -1,6 +1,5 @@
 package com.epf.marmitax.controllers;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +15,6 @@ import com.epf.marmitax.services.IngredientService;
 import java.io.IOException;
 import java.util.List;
 
-@CrossOrigin
 @RequestMapping("ingredients")
 @RestController
 public class IngredientController {
