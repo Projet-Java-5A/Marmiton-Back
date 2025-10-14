@@ -1,5 +1,6 @@
 package com.epf.marmitax.services;
 
+import com.epf.marmitax.DTO.UstensileMapper;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.UserDao;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
+
 @Service
 
 public class UserService {
@@ -22,15 +25,19 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public List<User> findAll() {
-        Iterable<User> it = userDao.findAll();
-        List <User> users = new ArrayList<>();
-        it.forEach(users::add);
-        return users;
+    public List<UserDto> findAll() {
+        return userDao
+                .findAll()
+                .stream()
+                .map(UserMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    public User getById(Long id){
-        return userDao.findById(id).orElseThrow();
+    public UserDto getById(Long id){
+        return userDao
+                .findById(id)
+                .map(UserMapper::toDto)
+                .orElseThrow();
     }
 
     @Transactional
@@ -40,14 +47,14 @@ public class UserService {
 
      
     @Transactional
-    public void addUser(UserDto userDto) throws IOException {
+    public void addUser(UserDto userDto) {
         User user;
         user = UserMapper.fromDto(userDto, null);
         userDao.save(user);  
     }
 
     @Transactional
-    public void updateUser(UserDto userDto, Long id) throws IOException {
+    public void updateUser(UserDto userDto, Long id) {
         userDao.findById(id).orElseThrow(() -> new NoSuchElementException("Le user n'existe pas"));
         User user;
         user = UserMapper.fromDto(userDto, id);

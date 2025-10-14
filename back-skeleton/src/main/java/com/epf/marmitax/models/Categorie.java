@@ -25,6 +25,5 @@ public class Categorie {
     private Long idCategorie;
     private String nomCategorie;
     @OneToMany(mappedBy = "categorie_ingredient")
-    @JsonIgnore
     private List<Ingredient> ingredientsDansCategorie;
 }

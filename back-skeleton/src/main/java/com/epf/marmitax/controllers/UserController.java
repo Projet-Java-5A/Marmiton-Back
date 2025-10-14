@@ -27,12 +27,12 @@ public class UserController {
     }
 
     @GetMapping("")
-    public List<User> getAllUsers() {
+    public List<UserDto> getAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public UserDto getUserById(@PathVariable Long id) {
         return userService.getById(id);
     }
 
@@ -42,12 +42,12 @@ public class UserController {
     }
 
     @PostMapping("")
-    public void addUser(@RequestBody UserDto userDto) throws IOException {
+    public void addUser(@RequestBody UserDto userDto) {
         userService.addUser(userDto);
     }
 
     @PostMapping("/{id}")
-    public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) throws IOException {
+    public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
         userService.updateUser(userDto, id);
     }
 }

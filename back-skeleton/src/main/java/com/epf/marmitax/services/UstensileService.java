@@ -11,7 +11,7 @@ import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 @Service
 public class UstensileService {
@@ -21,15 +21,19 @@ public class UstensileService {
         this.ustensileDao = ustensileDao;
     }
 
-    public List<Ustensile> findAll() {
-        Iterable<Ustensile> it = ustensileDao.findAll();
-        List <Ustensile> ustensiles = new ArrayList<>();
-        it.forEach(ustensiles::add);
-        return ustensiles;
+    public List<UstensileDto> findAll() {
+        return ustensileDao
+                .findAll()
+                .stream()
+                .map(UstensileMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    public Ustensile getById(Long id){
-        return ustensileDao.findById(id).orElseThrow();
+    public UstensileDto getById(Long id){
+        return ustensileDao
+                .findById(id)
+                .map(UstensileMapper::toDto)
+                .orElseThrow();
     }
 
     @Transactional
@@ -39,16 +43,16 @@ public class UstensileService {
 
     @Transactional
     public void addUstensile(UstensileDto ustensileDto) {
-        Ustensile ustensile;
-        ustensile = UstensileMapper.fromDto(ustensileDto);
+        Ustensile ustensile = UstensileMapper.fromDto(ustensileDto);
         ustensileDao.save(ustensile);  
     }
 
     @Transactional
     public void updateUstensile(UstensileDto ustensileDto, Long id) {
-        ustensileDao.findById(id).orElseThrow(() -> new NoSuchElementException("La ustensile n'existe pas"));
-        Ustensile ustensile;
-        ustensile = UstensileMapper.fromDto(ustensileDto);
+        ustensileDao
+                .findById(id)
+                .orElseThrow(() -> new NoSuchElementException("L'ustensile n'existe pas"));
+        Ustensile ustensile = UstensileMapper.fromDto(ustensileDto);
         ustensileDao.save(ustensile);
     }
 

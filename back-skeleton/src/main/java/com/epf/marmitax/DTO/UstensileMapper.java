@@ -13,6 +13,7 @@ public class UstensileMapper {
     public static UstensileDto toDto(Ustensile ustensile){
         return UstensileDto.builder()
                 .idUstensileDto(ustensile.getIdUstensile())
+                .nomUstensileDto(ustensile.getNomUstensile())
                 .build();
     }
 }

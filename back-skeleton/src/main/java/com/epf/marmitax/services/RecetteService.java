@@ -1,5 +1,6 @@
 package com.epf.marmitax.services;
 
+import com.epf.marmitax.DTO.UstensileMapper;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.RecetteDao;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class RecetteService {
@@ -22,15 +24,19 @@ public class RecetteService {
         this.recetteDao = recetteDao;
     }
 
-    public List<Recette> findAll() {
-        Iterable<Recette> it = recetteDao.findAll();
-        List <Recette> recettes = new ArrayList<>();
-        it.forEach(recettes::add);
-        return recettes;
+    public List<RecetteDto> findAll() {
+        return recetteDao
+                .findAll()
+                .stream()
+                .map(RecetteMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    public Recette getById(Long id){
-        return recetteDao.findById(id).orElseThrow();
+    public RecetteDto getById(Long id){
+        return recetteDao
+                .findById(id)
+                .map(RecetteMapper::toDto)
+                .orElseThrow();
     }
 
     @Transactional
@@ -39,14 +45,14 @@ public class RecetteService {
     }
 
     @Transactional
-    public void addRecette(RecetteDto recetteDto) throws IOException {
+    public void addRecette(RecetteDto recetteDto) {
         Recette recette;
         recette = RecetteMapper.fromDto(recetteDto);
         recetteDao.save(recette);  
     }
 
     @Transactional
-    public void updateRecette(RecetteDto recetteDto, Long id) throws IOException {
+    public void updateRecette(RecetteDto recetteDto, Long id) {
         recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
         Recette recette;
         recette = RecetteMapper.fromDto(recetteDto);

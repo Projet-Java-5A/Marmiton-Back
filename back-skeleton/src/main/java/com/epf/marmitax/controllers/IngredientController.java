@@ -27,12 +27,12 @@ public class IngredientController {
     }
 
     @GetMapping("")
-    public List<Ingredient> getAllIngredients() {
+    public List<IngredientDto> getAllIngredients() {
         return ingredientService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Ingredient getIngredientById(@PathVariable Long id) {
+    public IngredientDto getIngredientById(@PathVariable Long id) {
         return ingredientService.getById(id);
     }
 
@@ -42,12 +42,12 @@ public class IngredientController {
     }
 
     @PostMapping("")
-    public void addIngredient(@RequestBody IngredientDto ingredientDto) throws IOException {
+    public void addIngredient(@RequestBody IngredientDto ingredientDto) {
         ingredientService.addIngredient(ingredientDto);
     }
 
     @PostMapping("/{id}")
-    public void updateIngredient(@RequestBody IngredientDto ingredientDto, @PathVariable Long id) throws IOException {
+    public void updateIngredient(@RequestBody IngredientDto ingredientDto, @PathVariable Long id) {
         ingredientService.updateIngredient(ingredientDto);
     }
 }

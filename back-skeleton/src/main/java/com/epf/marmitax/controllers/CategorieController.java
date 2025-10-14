@@ -27,12 +27,12 @@ public class CategorieController {
     }
 
     @GetMapping("")
-    public List<Categorie> getAllCategories() {
+    public List<CategorieDto> getAllCategories() {
         return categorieService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Categorie getCategorieById(@PathVariable Long id) {
+    public CategorieDto getCategorieById(@PathVariable Long id) {
         return categorieService.getById(id);
     }
 
@@ -42,12 +42,12 @@ public class CategorieController {
     }
 
     @PostMapping("")
-    public void addCategorie(@RequestBody CategorieDto categorieDto) throws IOException {
+    public void addCategorie(@RequestBody CategorieDto categorieDto) {
         categorieService.addCategorie(categorieDto);
     }
 
     @PostMapping("/{id}")
-    public void updateCategorie(@RequestBody CategorieDto categorieDto, @PathVariable Long id) throws IOException {
+    public void updateCategorie(@RequestBody CategorieDto categorieDto, @PathVariable Long id) {
         categorieService.updateCategorie(categorieDto);
     }
 }

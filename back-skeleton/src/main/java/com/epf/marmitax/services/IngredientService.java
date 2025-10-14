@@ -1,5 +1,6 @@
 package com.epf.marmitax.services;
 
+import com.epf.marmitax.DTO.UstensileMapper;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.IngredientDao;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 @Service
 public class IngredientService {
@@ -22,15 +24,19 @@ public class IngredientService {
         this.ingredientDao = ingredientDao;
     }
 
-    public List<Ingredient> findAll() {
-        Iterable<Ingredient> it = ingredientDao.findAll();
-        List <Ingredient> ingredients = new ArrayList<>();
-        it.forEach(ingredients::add);
-        return ingredients;
+    public List<IngredientDto> findAll() {
+        return ingredientDao
+                .findAll()
+                .stream()
+                .map(IngredientMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    public Ingredient getById(Long id){
-        return ingredientDao.findById(id).orElseThrow();
+    public IngredientDto getById(Long id){
+        return ingredientDao
+                .findById(id)
+                .map(IngredientMapper::toDto)
+                .orElseThrow();
     }
 
     @Transactional // Réalisé par une transaction
@@ -39,7 +45,7 @@ public class IngredientService {
     }
  
     @Transactional
-    public void addIngredient(IngredientDto ingredientDto) throws IOException {
+    public void addIngredient(IngredientDto ingredientDto) {
         Ingredient ingredient = IngredientMapper.fromDto(ingredientDto);
         ingredientDao.save(ingredient);  
     }

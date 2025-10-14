@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epf.marmitax.DTO.UstensileDto;
-import com.epf.marmitax.models.Ustensile;
 import com.epf.marmitax.services.UstensileService;
 
 @CrossOrigin
@@ -27,12 +26,12 @@ public class UstensileController {
     }
 
     @GetMapping("")
-    public List<Ustensile> getAllUstensiles() {
+    public List<UstensileDto> getAllUstensiles() {
         return ustensileService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Ustensile getUstensileById(@PathVariable Long id) {
+    public UstensileDto getUstensileById(@PathVariable Long id) {
         return ustensileService.getById(id);
     }
 

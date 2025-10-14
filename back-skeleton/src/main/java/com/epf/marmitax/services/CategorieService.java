@@ -1,5 +1,6 @@
 package com.epf.marmitax.services;
 
+import com.epf.marmitax.DTO.UstensileMapper;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.CategorieDao;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 @Service
 public class CategorieService {
@@ -22,15 +24,19 @@ public class CategorieService {
         this.categorieDao = categorieDao;
     }
 
-    public List<Categorie> findAll() {
-        Iterable<Categorie> it = categorieDao.findAll();
-        List <Categorie> categories = new ArrayList<>();
-        it.forEach(categories::add);
-        return categories;
+    public List<CategorieDto> findAll() {
+        return categorieDao
+                .findAll()
+                .stream()
+                .map(CategorieMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    public Categorie getById(Long id){
-        return categorieDao.findById(id).orElseThrow();
+    public CategorieDto getById(Long id){
+        return categorieDao
+                .findById(id)
+                .map(CategorieMapper::toDto)
+                .orElseThrow();
     }
 
     @Transactional
@@ -39,14 +45,14 @@ public class CategorieService {
     }
  
     @Transactional
-    public void addCategorie(CategorieDto categorieDto) throws IOException {
+    public void addCategorie(CategorieDto categorieDto) {
         Categorie categorie = CategorieMapper.fromDto(categorieDto);
         categorieDao.save(categorie);  
     }
 
     @Transactional
     public void updateCategorie(CategorieDto categorieDto) {
-        categorieDao.findById(categorieDto.idCategorieDto()).orElseThrow(() -> new NoSuchElementException("L'ingrédient n'existe pas Evannnnnnnnnnnnn"));
+        categorieDao.findById(categorieDto.idCategorieDto()).orElseThrow(() -> new NoSuchElementException("La categorie n'existe pas"));
         Categorie categorie;
         categorie = CategorieMapper.fromDto(categorieDto);
         categorieDao.save(categorie);

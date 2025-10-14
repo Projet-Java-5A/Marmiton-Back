@@ -27,12 +27,12 @@ public class RecetteController {
     }
 
     @GetMapping("")
-    public List<Recette> getAllIngredients() {
+    public List<RecetteDto> getAllIngredients() {
         return recetteService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Recette getRecetteById(@PathVariable Long id) {
+    public RecetteDto getRecetteById(@PathVariable Long id) {
         return recetteService.getById(id);
     }
 
@@ -42,12 +42,12 @@ public class RecetteController {
     }
 
     @PostMapping("")
-    public void addRecette(@RequestBody RecetteDto recetteDto) throws IOException {
+    public void addRecette(@RequestBody RecetteDto recetteDto) {
         recetteService.addRecette(recetteDto);
     }
 
     @PostMapping("/{id}")
-    public void updateRecette(@RequestBody RecetteDto recetteDto, @PathVariable Long id) throws IOException {
+    public void updateRecette(@RequestBody RecetteDto recetteDto, @PathVariable Long id) {
         recetteService.updateRecette(recetteDto, id);
     }
 }
