@@ -1,20 +1,15 @@
 package com.epf.marmitax.controllers;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.epf.marmitax.DTO.CategorieDto;
-import com.epf.marmitax.models.Categorie;
 import com.epf.marmitax.services.CategorieService;
 
-import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping("categories")
 @RestController
 public class CategorieController {
@@ -25,27 +20,60 @@ public class CategorieController {
     }
 
     @GetMapping("")
-    public List<CategorieDto> getAllCategories() {
-        return categorieService.findAll();
+    public ResponseEntity<?> getAllCategories() {
+        try{
+            List<CategorieDto> categories = categorieService.findAll();
+            return new ResponseEntity<>(categories, HttpStatus.OK);
+        }
+        catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la récupération des catégories : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @GetMapping("/{id}")
-    public CategorieDto getCategorieById(@PathVariable Long id) {
-        return categorieService.getById(id);
+    public ResponseEntity<?> getCategorieById(@PathVariable Long id) {
+        try{
+            CategorieDto categorie = categorieService.getById(id);
+            return new ResponseEntity<>(categorie, HttpStatus.OK);
+        }
+        catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la récupération de la catégorie : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCategorie(@PathVariable Long id) {
-        categorieService.deleteById(id);
+    public ResponseEntity<?> deleteCategorie(@PathVariable Long id) {
+        try {
+            categorieService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la suppression de la catégorie : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("")
-    public void addCategorie(@RequestBody CategorieDto categorieDto) {
-        categorieService.addCategorie(categorieDto);
+    public ResponseEntity<?> addCategorie(@RequestBody CategorieDto categorieDto) {
+        try {
+            categorieService.addCategorie(categorieDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la création de la catégorie : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @PostMapping("/{id}")
-    public void updateCategorie(@RequestBody CategorieDto categorieDto, @PathVariable Long id) {
-        categorieService.updateCategorie(categorieDto);
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateCategorie(@RequestBody CategorieDto categorieDto, @PathVariable Long id) {
+        try {
+            categorieService.updateCategorie(categorieDto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la modification de la catégorie : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

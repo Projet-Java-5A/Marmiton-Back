@@ -1,6 +1,5 @@
 package com.epf.marmitax.services;
 
-import com.epf.marmitax.DTO.UstensileMapper;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.IngredientDao;
@@ -12,8 +11,6 @@ import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,7 +56,7 @@ public class IngredientService {
     }
 
     // TODO Rechercher un ingrédient par catégorie
-    // public List<Ingredient> searchByCategorie(int categorieId) {
-    //    return ingredientDao.findByCategorieId(categorieId);
-    //}
+//    public List<Ingredient> searchByCategorie(int categorieId) {
+//        return ingredientDao.findAllByCategorie_ingredientEquals(categorieId);
+//    }
 }

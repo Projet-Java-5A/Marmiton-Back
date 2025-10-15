@@ -1,6 +1,5 @@
 package com.epf.marmitax.services;
 
-import com.epf.marmitax.DTO.UstensileMapper;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.RecetteDao;
@@ -11,8 +10,6 @@ import com.epf.marmitax.models.Recette;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 

@@ -1,20 +1,15 @@
 package com.epf.marmitax.controllers;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.epf.marmitax.DTO.IngredientDto;
-import com.epf.marmitax.models.Ingredient;
 import com.epf.marmitax.services.IngredientService;
 
-import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping("ingredients")
 @RestController
 public class IngredientController {
@@ -25,27 +20,57 @@ public class IngredientController {
     }
 
     @GetMapping("")
-    public List<IngredientDto> getAllIngredients() {
-        return ingredientService.findAll();
+    public ResponseEntity<?> getAllIngredients() {
+        try {
+            List<IngredientDto> ingredients =  ingredientService.findAll();
+            return new ResponseEntity<>(ingredients, HttpStatus.OK);
+        } catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la récupération des ingrédients : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/{id}")
-    public IngredientDto getIngredientById(@PathVariable Long id) {
-        return ingredientService.getById(id);
+    public ResponseEntity<?> getIngredientById(@PathVariable Long id) {
+        try {
+            IngredientDto ingredient = ingredientService.getById(id);
+            return new ResponseEntity<>(ingredient, HttpStatus.OK);
+        } catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la récupération de l'ingrédient : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void deleteIngredient(@PathVariable Long id) {
-        ingredientService.deleteById(id);
+    public ResponseEntity<?> deleteIngredient(@PathVariable Long id) {
+        try {
+            ingredientService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la suppression de l'ingrédient : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("")
-    public void addIngredient(@RequestBody IngredientDto ingredientDto) {
-        ingredientService.addIngredient(ingredientDto);
+    public ResponseEntity<?> addIngredient(@RequestBody IngredientDto ingredientDto) {
+        try {
+            ingredientService.addIngredient(ingredientDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la création de l'ingrédient : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @PostMapping("/{id}")
-    public void updateIngredient(@RequestBody IngredientDto ingredientDto, @PathVariable Long id) {
-        ingredientService.updateIngredient(ingredientDto);
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateIngredient(@RequestBody IngredientDto ingredientDto, @PathVariable Long id) {
+        try {
+            ingredientService.updateIngredient(ingredientDto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch(Exception e){// TODO mieux définir les erreurs
+            String errorMessage = "Une erreur est survenue lors de la modification de l'ingrédient : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
