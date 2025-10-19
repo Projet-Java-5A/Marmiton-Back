@@ -4,7 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.epf.marmitax.DTO.IngredientCreateDTO;
 import com.epf.marmitax.DTO.IngredientDto;
+import com.epf.marmitax.DTO.IngredientListDTO;
 import com.epf.marmitax.services.IngredientService;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class IngredientController {
     @GetMapping("")
     public ResponseEntity<?> getAllIngredients() {
         try {
-            List<IngredientDto> ingredients =  ingredientService.findAll();
+            List<IngredientListDTO> ingredients =  ingredientService.findAllSimple();
             return new ResponseEntity<>(ingredients, HttpStatus.OK);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la récupération des ingrédients : " + e.getMessage();
@@ -53,9 +55,9 @@ public class IngredientController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addIngredient(@RequestBody IngredientDto ingredientDto) {
+    public ResponseEntity<?> addIngredient(@RequestBody IngredientCreateDTO ingredientDto) {
         try {
-            ingredientService.addIngredient(ingredientDto);
+            ingredientService.saveIngredientFromDto(ingredientDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la création de l'ingrédient : " + e.getMessage();
