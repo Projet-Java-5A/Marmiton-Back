@@ -7,6 +7,7 @@ import com.epf.marmitax.DTO.UserDto;
 import com.epf.marmitax.DTO.UserMapper;
 import com.epf.marmitax.models.User;
 
+import javax.naming.AuthenticationException;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -56,6 +57,19 @@ public class UserService {
         User user;
         user = UserMapper.fromDto(userDto, id);
         userDao.save(user);
+    }
+
+    public UserDto loginUser(String mailUser, String mdpUser) throws AuthenticationException {
+        User user = userDao.findByMailUser(mailUser)
+            .orElseThrow(() -> new AuthenticationException("User not found"));
+
+        // ATTENTION: Comparaison de mot de passe en clair. C'est une faille de sécurité majeure.
+        // Il est impératif de remplacer ceci par une vérification de mot de passe haché (ex: BCrypt).
+        if (!user.getMdpUser().equals(mdpUser)) {
+            throw new AuthenticationException("Invalid password");
+        }
+
+        return UserMapper.toDto(user);
     }
 
     // TODO Rechercher une user par catégorie

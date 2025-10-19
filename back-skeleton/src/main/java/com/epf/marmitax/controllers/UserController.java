@@ -9,6 +9,9 @@ import com.epf.marmitax.DTO.UserDto;
 import com.epf.marmitax.services.UserService;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.naming.AuthenticationException;
 
 @CrossOrigin
 @RequestMapping("users")
@@ -71,6 +74,21 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la modification de l'utilisateur : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Map<String, String> credentials) {
+        try {
+            String mailUser = credentials.get("mailUser");
+            String mdpUser = credentials.get("mdpUser");
+            UserDto user = userService.loginUser(mailUser, mdpUser);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (AuthenticationException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        } catch (Exception e) {
+            String errorMessage = "Une erreur est survenue lors de la connexion : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
