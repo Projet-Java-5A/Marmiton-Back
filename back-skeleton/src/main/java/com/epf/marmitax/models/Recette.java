@@ -1,7 +1,9 @@
 package com.epf.marmitax.models;
 
 import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +28,10 @@ public class Recette {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idRecette;
     private String nomRecette;
-    @ManyToMany
-    @JoinTable(
-        name="contenir",
-        joinColumns = {@JoinColumn(name="id_recette")},
-        inverseJoinColumns = {@JoinColumn(name="id_ingredient")})
-    private List<Ingredient> ingredients;
+
+    @OneToMany(mappedBy = "recette", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RecetteIngredient> recetteIngredients;
+
     @ManyToMany
     @JoinTable(
         name="utiliser",

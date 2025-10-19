@@ -1,5 +1,6 @@
 package com.epf.marmitax.services;
 
+import com.epf.marmitax.DTO.UserCreateDTO;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.UserDao;
@@ -21,6 +22,17 @@ public class UserService {
 
     public UserService(UserDao userDao){
         this.userDao = userDao;
+    }
+
+    @Transactional
+    public User createUser(UserCreateDTO userCreateDTO) {
+        User user = new User();
+        user.setIsAdmin(userCreateDTO.isAdmin());
+        user.setNomUser(userCreateDTO.getNomUser());
+        user.setPrenomUser(userCreateDTO.getPrenomUser());
+        user.setMailUser(userCreateDTO.getMailUser());
+        user.setMdpUser(userCreateDTO.getMdpUser());
+        return userDao.save(user);
     }
 
     public List<UserDto> findAll() {
@@ -72,8 +84,4 @@ public class UserService {
         return UserMapper.toDto(user);
     }
 
-    // TODO Rechercher une user par catégorie
-    // public List<User> searchByCategorie(int categorieId) {
-    //    return userDao.findByCategorieId(categorieId);
-    //}
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.epf.marmitax.DTO.UserCreateDTO;
 import com.epf.marmitax.DTO.UserDto;
 import com.epf.marmitax.services.UserService;
 
@@ -57,9 +58,9 @@ public class UserController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> addUser(@RequestBody UserCreateDTO userCreateDTO) {
         try {
-            userService.addUser(userDto);
+            userService.createUser(userCreateDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la création de l'utilisateur : " + e.getMessage();

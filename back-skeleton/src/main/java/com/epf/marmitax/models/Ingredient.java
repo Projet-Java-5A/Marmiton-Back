@@ -1,14 +1,15 @@
 package com.epf.marmitax.models;
 
-import java.util.List;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class Ingredient {
     @ManyToOne
     @JoinColumn(name = "id_categorie")
     private Categorie categorie_ingredient; // On met en snake_case pour correspondre à la BDD car ça bug sinon :(
-    @ManyToMany(mappedBy = "ingredients")
-    private List<Recette> recettesUsingThisIngredient;
+
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RecetteIngredient> recetteIngredients;
 }

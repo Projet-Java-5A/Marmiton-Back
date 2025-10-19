@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.epf.marmitax.DTO.RecetteCreateDTO;
 import com.epf.marmitax.DTO.RecetteDto;
 import com.epf.marmitax.services.RecetteService;
 
@@ -53,9 +54,9 @@ public class RecetteController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addRecette(@RequestBody RecetteDto recetteDto) {
+    public ResponseEntity<?> addRecette(@RequestBody RecetteCreateDTO recetteCreateDTO) {
         try {
-            recetteService.addRecette(recetteDto);
+            recetteService.createRecette(recetteCreateDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la création de la recette : " + e.getMessage();
