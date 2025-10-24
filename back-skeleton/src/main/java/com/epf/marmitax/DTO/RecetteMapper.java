@@ -3,6 +3,7 @@ package com.epf.marmitax.DTO;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import com.epf.marmitax.models.Ingredient;
 import com.epf.marmitax.models.Recette;
 
 public class RecetteMapper {
@@ -24,7 +25,15 @@ public class RecetteMapper {
         return RecetteDto.builder()
             .idRecetteDto(recette.getIdRecette())
             .nomRecetteDto(recette.getNomRecette())
-            .ingredientsDto(new ArrayList<>()) // Empty list
+            .ingredientsDto(recette.getRecetteIngredients().stream().map(recetteIngredient -> {
+                Ingredient ingredient = recetteIngredient.getIngredient();
+                return IngredientDetailsDto.builder()
+                    .id(ingredient.getIdIngredient())
+                    .nom(ingredient.getNomIngredient())
+                    .categorie(CategorieMapper.toDto(ingredient.getCategorie_ingredient()))
+                    .quantite(recetteIngredient.getQuantite())
+                    .build();
+            }).collect(Collectors.toList()))
             .ustensilesDto(recette.getUstensiles().stream().map(UstensileMapper::toDto).collect(Collectors.toList()))
             .dureeRecetteDto(recette.getDureeRecette())
             .difficulteRecetteDto(recette.getDifficulteRecette())

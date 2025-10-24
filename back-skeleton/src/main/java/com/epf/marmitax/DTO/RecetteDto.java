@@ -8,7 +8,7 @@ import java.util.List;
 public record RecetteDto(
     Long idRecetteDto,
     String nomRecetteDto,
-    List<IngredientDto> ingredientsDto,
+    List<IngredientDetailsDto> ingredientsDto,
     List<UstensileDto> ustensilesDto,
     Integer dureeRecetteDto,
     Integer difficulteRecetteDto,
