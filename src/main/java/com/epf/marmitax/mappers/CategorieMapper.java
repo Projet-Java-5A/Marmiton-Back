@@ -32,7 +32,7 @@ public class CategorieMapper {
         return CategorieDto.builder()
                 .idCategorieDto(categorie.getIdCategorie())
                 .nomCategorieDto(categorie.getNomCategorie())
-                .ingredientsDansCategorieDto(categorie.getIngredientsDansCategorie().stream().map(IngredientMapper::toDto).toList())
+                .ingredientsDansCategorieDto(categorie.getIngredientsDansCategorie().stream().map(IngredientMapper::toIngredientDansCategorieDto).toList())
                 .build();
     }
 }

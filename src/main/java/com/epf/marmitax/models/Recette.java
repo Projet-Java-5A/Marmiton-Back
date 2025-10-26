@@ -12,7 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import com.epf.marmitax.models.ApprovalStatus;
+import com.epf.marmitax.models.ApprovalStatus; //TODO fix the error
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;

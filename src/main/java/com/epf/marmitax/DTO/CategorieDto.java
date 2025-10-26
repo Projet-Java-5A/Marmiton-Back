@@ -8,5 +8,5 @@ import lombok.Builder;
 public record CategorieDto(
     Long idCategorieDto,
     String nomCategorieDto,
-    List<IngredientDto> ingredientsDansCategorieDto
+    List<IngredientDansCategorieDto> ingredientsDansCategorieDto
 ) {}

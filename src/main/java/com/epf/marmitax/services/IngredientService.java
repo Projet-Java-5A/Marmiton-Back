@@ -3,7 +3,6 @@ package com.epf.marmitax.services;
 import com.epf.marmitax.DAO.CategorieDao;
 import com.epf.marmitax.DTO.IngredientCreateDTO;
 import com.epf.marmitax.DTO.IngredientListDTO;
-import com.epf.marmitax.mappers.IngredientListMapper;
 import com.epf.marmitax.mappers.IngredientMapper;
 import com.epf.marmitax.models.Categorie;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,7 @@ public class IngredientService {
         return ingredientDao
                 .findAll()
                 .stream()
-                .map(IngredientListMapper::toDto)
+                .map(IngredientMapper::toListDto)
                 .collect(Collectors.toList());
     }
 

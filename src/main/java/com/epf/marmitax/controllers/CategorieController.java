@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.epf.marmitax.DTO.CategorieSimpleDto;
+import com.epf.marmitax.DTO.CategorieDto;
 import com.epf.marmitax.services.CategorieService;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CategorieController {
     @GetMapping("")
     public ResponseEntity<?> getAllCategories() {
         try{
-            List<CategorieSimpleDto> categories = categorieService.findAll();
+            List<CategorieDto> categories = categorieService.findAll();
             return new ResponseEntity<>(categories, HttpStatus.OK);
         }
         catch(Exception e){// TODO mieux définir les erreurs

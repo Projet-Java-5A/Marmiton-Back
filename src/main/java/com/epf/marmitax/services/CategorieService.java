@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.CategorieDao;
 import com.epf.marmitax.DTO.CategorieSimpleDto;
+import com.epf.marmitax.DTO.CategorieDto;
 import com.epf.marmitax.mappers.CategorieMapper;
 import com.epf.marmitax.models.Categorie;
 
@@ -21,11 +22,11 @@ public class CategorieService {
         this.categorieDao = categorieDao;
     }
 
-    public List<CategorieSimpleDto> findAll() {
+    public List<CategorieDto> findAll() {
         return categorieDao
                 .findAll()
                 .stream()
-                .map(CategorieMapper::toSimpleDto)
+                .map(CategorieMapper::toDto)
                 .collect(Collectors.toList());
     }
 
