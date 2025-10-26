@@ -46,7 +46,7 @@ CREATE TABLE recette (
 CREATE TABLE recette_ingredient (
     id_recette BIGINT,
     id_ingredient BIGINT,
-    quantité_ingredient VARCHAR(255),
+    quantite VARCHAR(255),
     PRIMARY KEY (id_recette, id_ingredient),
     FOREIGN KEY (id_recette) REFERENCES recette (id_recette),
     FOREIGN KEY (id_ingredient) REFERENCES ingredient (id_ingredient)

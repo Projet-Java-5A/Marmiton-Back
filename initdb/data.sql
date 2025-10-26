@@ -35,7 +35,7 @@ INSERT INTO utiliser (id_recette, id_ustensile) VALUES
 (1, 1);
 
 -- Populate recette_ingredient (recette-ingredient with quantity)
-INSERT INTO recette_ingredient (id_recette, id_ingredient, quantité_ingredient) VALUES
+INSERT INTO recette_ingredient (id_recette, id_ingredient, quantite) VALUES
 (1, 1, '500g'), -- 500g of carottes
 (1, 6, '1 pincée'); -- a pinch of poivre
 
@@ -96,7 +96,7 @@ INSERT INTO utiliser (id_recette, id_ustensile) VALUES
 (4, 9);
 
 -- Populate recette_ingredient (recette-ingredient with quantity)
-INSERT INTO recette_ingredient (id_recette, id_ingredient, quantité_ingredient) VALUES
+INSERT INTO recette_ingredient (id_recette, id_ingredient, quantite) VALUES
 (2, 8, '400g'),
 (2, 11, '200g'),
 (2, 9, '2'),
