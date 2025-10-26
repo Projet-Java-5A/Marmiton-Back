@@ -1,11 +1,5 @@
-CREATE SEQUENCE utilisateurs_seq START WITH 1 INCREMENT BY 50;
-CREATE SEQUENCE categorie_seq START WITH 1 INCREMENT BY 50;
-CREATE SEQUENCE ustensile_seq START WITH 1 INCREMENT BY 50;
-CREATE SEQUENCE ingredient_seq START WITH 1 INCREMENT BY 50;
-CREATE SEQUENCE recette_seq START WITH 1 INCREMENT BY 50;
-
 CREATE TABLE utilisateurs (
-    id_user BIGINT PRIMARY KEY DEFAULT nextval('utilisateurs_seq'),
+    id_user BIGSERIAL PRIMARY KEY,
     is_admin BOOLEAN,
     nom_user VARCHAR(255),
     prenom_user VARCHAR(255),
@@ -14,24 +8,24 @@ CREATE TABLE utilisateurs (
 );
 
 CREATE TABLE categorie (
-    id_categorie BIGINT PRIMARY KEY DEFAULT nextval('categorie_seq'),
+    id_categorie BIGSERIAL PRIMARY KEY,
     nom_categorie VARCHAR(255)
 );
 
 CREATE TABLE ustensile (
-    id_ustensile BIGINT PRIMARY KEY DEFAULT nextval('ustensile_seq'),
+    id_ustensile BIGSERIAL PRIMARY KEY,
     nom_ustensile VARCHAR(255)
 );
 
 CREATE TABLE ingredient (
-    id_ingredient BIGINT PRIMARY KEY DEFAULT nextval('ingredient_seq'),
+    id_ingredient BIGSERIAL PRIMARY KEY,
     nom_ingredient VARCHAR(255),
     id_categorie BIGINT,
     FOREIGN KEY (id_categorie) REFERENCES categorie (id_categorie)
 );
 
 CREATE TABLE recette (
-    id_recette BIGINT PRIMARY KEY DEFAULT nextval('recette_seq'),
+    id_recette BIGSERIAL PRIMARY KEY,
     nom_recette VARCHAR(255),
     duree_recette INTEGER,
     difficulte_recette INTEGER,

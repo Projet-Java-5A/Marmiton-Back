@@ -23,7 +23,7 @@ import lombok.Setter;
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idIngredient;
     private String nomIngredient;
     @ManyToOne

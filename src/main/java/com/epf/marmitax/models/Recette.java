@@ -12,7 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import com.epf.marmitax.models.ApprovalStatus; //TODO fix the error
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
@@ -30,7 +29,7 @@ import lombok.Setter;
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Recette {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRecette;
     private String nomRecette;
 

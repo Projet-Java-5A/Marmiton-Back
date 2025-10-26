@@ -19,7 +19,7 @@ import lombok.Setter;
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Ustensile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUstensile;
     private String nomUstensile;
     @ManyToMany(mappedBy = "ustensiles")

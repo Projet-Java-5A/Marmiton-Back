@@ -19,7 +19,7 @@ import lombok.Setter;
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Categorie {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategorie;
     private String nomCategorie;
     @OneToMany(mappedBy = "categorie_ingredient")

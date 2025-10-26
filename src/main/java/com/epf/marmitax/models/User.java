@@ -19,7 +19,7 @@ import lombok.Setter;
 @Builder @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
     private Boolean isAdmin;
     private String nomUser;
