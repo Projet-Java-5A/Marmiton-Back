@@ -43,7 +43,7 @@ CREATE TABLE recette (
     FOREIGN KEY (id_user) REFERENCES utilisateurs (id_user)
 );
 
-CREATE TABLE contenir (
+CREATE TABLE recette_ingredient (
     id_recette BIGINT,
     id_ingredient BIGINT,
     quantité_ingredient VARCHAR(255),
