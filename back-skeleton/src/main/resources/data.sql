@@ -27,8 +27,8 @@ INSERT INTO ustensile (id_ustensile, nom_ustensile) VALUES
 (3, 'plancha');
 
 -- Populate recette
-INSERT INTO recette (id_recette, nom_recette, contenu_recette, image_recette, difficulte_recette, duree_recette, prix_recette, id_user) VALUES
-(1, 'tarte à la carotte', 'Première étape : éplucher les carottes ...', 'https://uneplumedanslacuisine.com/wp-content/uploads/2015/07/Tarte-aux-carottes-30-1.jpg', 1, 45, 10, 1);
+INSERT INTO recette (id_recette, nom_recette, contenu_recette, image_recette, difficulte_recette, duree_recette, prix_recette, id_user, approval_status) VALUES
+(1, 'tarte à la carotte', 'Première étape : éplucher les carottes ...', 'https://uneplumedanslacuisine.com/wp-content/uploads/2015/07/Tarte-aux-carottes-30-1.jpg', 1, 45, 10, 1, 'APPROVED');
 
 -- Populate utiliser (recette-ustensile)
 INSERT INTO utiliser (id_recette, id_ustensile) VALUES
@@ -75,10 +75,10 @@ INSERT INTO ustensile (id_ustensile, nom_ustensile) VALUES
 (9, 'Plat à gratin');
 
 -- Populate recette
-INSERT INTO recette (id_recette, nom_recette, contenu_recette, image_recette, difficulte_recette, duree_recette, prix_recette, id_user) VALUES
-(2, 'Pâtes à la carbonara', 'Faire cuire les pâtes. Faire revenir les lardons et l''oignon. Mélanger les oeufs, le fromage et la crème. Ajouter les pâtes et les lardons. Servir chaud.', 'https://assets.afcdn.com/recipe/20160401/465_w600.jpg', 2, 20, 5, 1),
-(3, 'Poulet au curry', 'Faire dorer le poulet. Ajouter l''oignon, l''ail et le curry. Verser le lait de coco et laisser mijoter. Servir avec du riz.', 'https://www.etal-des-epices.com/wp-content/uploads/2023/11/poulet-curry-coco.jpg', 2, 30, 12, 2),
-(4, 'Lasagnes à la bolognaise', 'Préparer la sauce bolognaise avec le boeuf haché, la sauce tomate, l''oignon et l''ail. Monter les lasagnes en alternant couches de pâtes, de bolognaise et de béchamel. Terminer par du fromage. Enfourner 30 minutes.', 'https://ets-drap.com/wp-content/uploads/2019/04/Lasagne-maison-avec-sauce-Bolognaise-DRAP.jpg', 3, 60, 15, 1);
+INSERT INTO recette (id_recette, nom_recette, contenu_recette, image_recette, difficulte_recette, duree_recette, prix_recette, id_user, approval_status) VALUES
+(2, 'Pâtes à la carbonara', 'Faire cuire les pâtes. Faire revenir les lardons et l''oignon. Mélanger les oeufs, le fromage et la crème. Ajouter les pâtes et les lardons. Servir chaud.', 'https://assets.afcdn.com/recipe/20160401/465_w600.jpg', 2, 20, 5, 1, 'APPROVED'),
+(3, 'Poulet au curry', 'Faire dorer le poulet. Ajouter l''oignon, l''ail et le curry. Verser le lait de coco et laisser mijoter. Servir avec du riz.', 'https://www.etal-des-epices.com/wp-content/uploads/2023/11/poulet-curry-coco.jpg', 2, 30, 12, 2, 'APPROVED'),
+(4, 'Lasagnes à la bolognaise', 'Préparer la sauce bolognaise avec le boeuf haché, la sauce tomate, l''oignon et l''ail. Monter les lasagnes en alternant couches de pâtes, de bolognaise et de béchamel. Terminer par du fromage. Enfourner 30 minutes.', 'https://ets-drap.com/wp-content/uploads/2019/04/Lasagne-maison-avec-sauce-Bolognaise-DRAP.jpg', 3, 60, 15, 1, 'APPROVED');
 
 -- Populate utiliser (recette-ustensile)
 INSERT INTO utiliser (id_recette, id_ustensile) VALUES

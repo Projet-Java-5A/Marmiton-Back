@@ -69,17 +69,46 @@ public class RecetteService {
 
     public List<RecetteDto> findAll() {
         return recetteDao
-                .findAll()
+                .findAllByApprovalStatus(ApprovalStatus.APPROVED)
                 .stream()
                 .map(RecetteMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     public RecetteDto getById(Long id){
-        return recetteDao
-                .findById(id)
-                .map(RecetteMapper::toDto)
-                .orElseThrow();
+        Recette recette = recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("Recette non trouvée"));
+        if(recette.getApprovalStatus() != ApprovalStatus.APPROVED) {
+            throw new NoSuchElementException("Cette recette n'est pas disponible.");
+        }
+        return RecetteMapper.toDto(recette);
+    }
+
+    public List<RecetteDto> findAllPending() {
+        return recetteDao.findAllByApprovalStatus(ApprovalStatus.PENDING)
+            .stream()
+            .map(RecetteMapper::toDto)
+            .collect(Collectors.toList());
+    }
+
+    public List<RecetteDto> findAllRejected() {
+        return recetteDao.findAllByApprovalStatus(ApprovalStatus.REJECTED)
+            .stream()
+            .map(RecetteMapper::toDto)
+            .collect(Collectors.toList());
+    }
+
+    public List<RecetteDto> findAllAdmin() {
+        return recetteDao.findAll()
+            .stream()
+            .map(RecetteMapper::toDto)
+            .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void updateRecetteStatus(Long id, ApprovalStatus status) {
+        Recette recette = recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("Recette non trouvée"));
+        recette.setApprovalStatus(status);
+        recetteDao.save(recette);
     }
 
     @Transactional

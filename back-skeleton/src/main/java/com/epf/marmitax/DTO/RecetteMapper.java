@@ -18,6 +18,7 @@ public class RecetteMapper {
             .prixRecette(dto.prixRecetteDto())
             .imageRecette(dto.imageRecetteDto())
             .contenuRecette(dto.contenuRecetteDto())
+            .approvalStatus(dto.approvalStatus())
             .build();
     }
 
@@ -40,6 +41,7 @@ public class RecetteMapper {
             .prixRecetteDto(recette.getPrixRecette())
             .imageRecetteDto(recette.getImageRecette())
             .contenuRecetteDto(recette.getContenuRecette())
+            .approvalStatus(recette.getApprovalStatus())
             .build();
     }
 }

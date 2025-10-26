@@ -1,5 +1,6 @@
 package com.epf.marmitax.DTO;
 
+import com.epf.marmitax.models.ApprovalStatus;
 import lombok.Builder;
 
 import java.util.List;
@@ -14,5 +15,6 @@ public record RecetteDto(
     Integer difficulteRecetteDto,
     Integer prixRecetteDto,
     String imageRecetteDto,
-    String contenuRecetteDto
+    String contenuRecetteDto,
+    ApprovalStatus approvalStatus
 ){}

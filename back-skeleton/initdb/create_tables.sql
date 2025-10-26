@@ -38,6 +38,7 @@ CREATE TABLE recette (
     prix_recette INTEGER,
     image_recette VARCHAR(255),
     contenu_recette TEXT,
+    approval_status VARCHAR(255) NOT NULL DEFAULT 'PENDING',
     id_user BIGINT,
     FOREIGN KEY (id_user) REFERENCES utilisateurs (id_user)
 );
