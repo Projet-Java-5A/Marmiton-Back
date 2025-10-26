@@ -32,7 +32,7 @@ public class RecetteMapper {
                 return IngredientDetailsDto.builder()
                     .id(ingredient.getIdIngredient())
                     .nom(ingredient.getNomIngredient())
-                    .categorie(CategorieMapper.toDto(ingredient.getCategorie_ingredient()))
+                    .categorie(CategorieMapper.toSimpleDto(ingredient.getCategorie_ingredient()))
                     .quantite(recetteIngredient.getQuantite())
                     .build();
             }).collect(Collectors.toList()))

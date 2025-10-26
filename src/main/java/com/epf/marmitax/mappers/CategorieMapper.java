@@ -1,5 +1,7 @@
 package com.epf.marmitax.mappers;
 
+
+import com.epf.marmitax.DTO.CategorieDto;
 import com.epf.marmitax.DTO.CategorieSimpleDto;
 import com.epf.marmitax.models.Categorie;
 
@@ -11,10 +13,26 @@ public class CategorieMapper {
                 .build();
     }
 
-    public static CategorieSimpleDto toDto(Categorie categorie){
+    public static CategorieSimpleDto toSimpleDto(Categorie categorie){
         return CategorieSimpleDto.builder()
                 .idCategorieDto(categorie.getIdCategorie())
                 .nomCategorieDto(categorie.getNomCategorie())
+                .build();
+    }
+
+    public static Categorie fromDto(CategorieDto dto) {
+        return Categorie.builder()
+                .idCategorie(dto.idCategorieDto())
+                .nomCategorie(dto.nomCategorieDto())
+                .ingredientsDansCategorie(dto.ingredientsDansCategorieDto().stream().map(IngredientMapper::fromDto).toList())
+                .build();
+    }
+
+    public static CategorieDto toDto(Categorie categorie){
+        return CategorieDto.builder()
+                .idCategorieDto(categorie.getIdCategorie())
+                .nomCategorieDto(categorie.getNomCategorie())
+                .ingredientsDansCategorieDto(categorie.getIngredientsDansCategorie().stream().map(IngredientMapper::toDto).toList())
                 .build();
     }
 }

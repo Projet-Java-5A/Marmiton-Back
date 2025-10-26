@@ -25,14 +25,14 @@ public class CategorieService {
         return categorieDao
                 .findAll()
                 .stream()
-                .map(CategorieMapper::toDto)
+                .map(CategorieMapper::toSimpleDto)
                 .collect(Collectors.toList());
     }
 
     public CategorieSimpleDto getById(Long id){
         return categorieDao
                 .findById(id)
-                .map(CategorieMapper::toDto)
+                .map(CategorieMapper::toSimpleDto)
                 .orElseThrow();
     }
 
