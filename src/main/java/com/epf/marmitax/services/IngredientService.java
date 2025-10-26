@@ -3,12 +3,12 @@ package com.epf.marmitax.services;
 import com.epf.marmitax.DAO.CategorieDao;
 import com.epf.marmitax.DTO.IngredientCreateDTO;
 import com.epf.marmitax.DTO.IngredientListDTO;
-import com.epf.marmitax.DTO.IngredientListMapper;
+import com.epf.marmitax.mappers.IngredientListMapper;
+import com.epf.marmitax.mappers.IngredientMapper;
 import com.epf.marmitax.models.Categorie;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.IngredientDao;
-import com.epf.marmitax.DTO.IngredientMapper;
 import com.epf.marmitax.DTO.IngredientDto;
 import com.epf.marmitax.models.Ingredient;
 

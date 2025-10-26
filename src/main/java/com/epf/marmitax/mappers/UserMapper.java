@@ -1,7 +1,8 @@
-package com.epf.marmitax.DTO;
+package com.epf.marmitax.mappers;
 
 import java.util.stream.Collectors;
 
+import com.epf.marmitax.DTO.UserDto;
 import com.epf.marmitax.models.User;
 
 public class UserMapper {

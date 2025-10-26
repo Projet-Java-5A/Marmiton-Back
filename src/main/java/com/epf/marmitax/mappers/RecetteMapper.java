@@ -1,8 +1,9 @@
-package com.epf.marmitax.DTO;
+package com.epf.marmitax.mappers;
 
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import com.epf.marmitax.DTO.IngredientDetailsDto;
+import com.epf.marmitax.DTO.RecetteDto;
 import com.epf.marmitax.models.Ingredient;
 import com.epf.marmitax.models.Recette;
 

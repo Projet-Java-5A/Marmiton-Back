@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.RecetteDao;
 import com.epf.marmitax.DTO.RecetteDto;
-import com.epf.marmitax.DTO.RecetteMapper;
+import com.epf.marmitax.mappers.RecetteMapper;
 
 import jakarta.transaction.Transactional;
 

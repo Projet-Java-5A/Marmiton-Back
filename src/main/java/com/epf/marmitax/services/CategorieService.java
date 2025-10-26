@@ -3,8 +3,8 @@ package com.epf.marmitax.services;
 import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.CategorieDao;
-import com.epf.marmitax.DTO.CategorieMapper;
-import com.epf.marmitax.DTO.CategorieDto;
+import com.epf.marmitax.DTO.CategorieSimpleDto;
+import com.epf.marmitax.mappers.CategorieMapper;
 import com.epf.marmitax.models.Categorie;
 
 import jakarta.transaction.Transactional;
@@ -21,7 +21,7 @@ public class CategorieService {
         this.categorieDao = categorieDao;
     }
 
-    public List<CategorieDto> findAll() {
+    public List<CategorieSimpleDto> findAll() {
         return categorieDao
                 .findAll()
                 .stream()
@@ -29,7 +29,7 @@ public class CategorieService {
                 .collect(Collectors.toList());
     }
 
-    public CategorieDto getById(Long id){
+    public CategorieSimpleDto getById(Long id){
         return categorieDao
                 .findById(id)
                 .map(CategorieMapper::toDto)
@@ -42,13 +42,13 @@ public class CategorieService {
     }
  
     @Transactional
-    public void addCategorie(CategorieDto categorieDto) {
+    public void addCategorie(CategorieSimpleDto categorieDto) {
         Categorie categorie = CategorieMapper.fromDto(categorieDto);
         categorieDao.save(categorie);  
     }
 
     @Transactional
-    public void updateCategorie(CategorieDto categorieDto) {
+    public void updateCategorie(CategorieSimpleDto categorieDto) {
         categorieDao.findById(categorieDto.idCategorieDto()).orElseThrow(() -> new NoSuchElementException("La categorie n'existe pas"));
         Categorie categorie;
         categorie = CategorieMapper.fromDto(categorieDto);

@@ -3,7 +3,7 @@ package com.epf.marmitax.DTO;
 import lombok.Builder;
 
 @Builder
-public record CategorieDto(
+public record CategorieSimpleDto(
     Long idCategorieDto,
     String nomCategorieDto
 ) {}

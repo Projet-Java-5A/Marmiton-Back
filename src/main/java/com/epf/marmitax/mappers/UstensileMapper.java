@@ -1,5 +1,6 @@
-package com.epf.marmitax.DTO;
+package com.epf.marmitax.mappers;
 
+import com.epf.marmitax.DTO.UstensileDto;
 import com.epf.marmitax.models.Ustensile;
 
 public class UstensileMapper {

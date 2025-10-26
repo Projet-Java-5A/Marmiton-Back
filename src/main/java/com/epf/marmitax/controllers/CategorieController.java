@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.epf.marmitax.DTO.CategorieDto;
+import com.epf.marmitax.DTO.CategorieSimpleDto;
 import com.epf.marmitax.services.CategorieService;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class CategorieController {
     @GetMapping("")
     public ResponseEntity<?> getAllCategories() {
         try{
-            List<CategorieDto> categories = categorieService.findAll();
+            List<CategorieSimpleDto> categories = categorieService.findAll();
             return new ResponseEntity<>(categories, HttpStatus.OK);
         }
         catch(Exception e){// TODO mieux définir les erreurs
@@ -35,7 +35,7 @@ public class CategorieController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getCategorieById(@PathVariable Long id) {
         try{
-            CategorieDto categorie = categorieService.getById(id);
+            CategorieSimpleDto categorie = categorieService.getById(id);
             return new ResponseEntity<>(categorie, HttpStatus.OK);
         }
         catch(Exception e){// TODO mieux définir les erreurs
@@ -56,7 +56,7 @@ public class CategorieController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addCategorie(@RequestBody CategorieDto categorieDto) {
+    public ResponseEntity<?> addCategorie(@RequestBody CategorieSimpleDto categorieDto) {
         try {
             categorieService.addCategorie(categorieDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -67,7 +67,7 @@ public class CategorieController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateCategorie(@RequestBody CategorieDto categorieDto, @PathVariable Long id) {
+    public ResponseEntity<?> updateCategorie(@RequestBody CategorieSimpleDto categorieDto, @PathVariable Long id) {
         try {
             categorieService.updateCategorie(categorieDto);
             return new ResponseEntity<>(HttpStatus.OK);

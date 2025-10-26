@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.UstensileDao;
 import com.epf.marmitax.DTO.UstensileDto;
-import com.epf.marmitax.DTO.UstensileMapper;
+import com.epf.marmitax.mappers.UstensileMapper;
 import com.epf.marmitax.models.Ustensile;
 
 import jakarta.transaction.Transactional;

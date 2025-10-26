@@ -1,5 +1,6 @@
-package com.epf.marmitax.DTO;
+package com.epf.marmitax.mappers;
 
+import com.epf.marmitax.DTO.IngredientListDTO;
 import com.epf.marmitax.models.Ingredient;
 
 public class IngredientListMapper {

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.epf.marmitax.DAO.UserDao;
 import com.epf.marmitax.DTO.UserDto;
-import com.epf.marmitax.DTO.UserMapper;
+import com.epf.marmitax.mappers.UserMapper;
 import com.epf.marmitax.models.User;
 
 import javax.naming.AuthenticationException;
