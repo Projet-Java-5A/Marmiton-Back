@@ -105,4 +105,17 @@ public class RecetteController {
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchRecettes(@RequestParam("search") String query) {
+        try {
+            // On suppose que votre RecetteService a une méthode pour chercher par nom.
+            // Le nom de la méthode peut varier (ex: search, findByNom, etc.)
+            List<RecetteDto> recettes = recetteService.searchByNom(query);
+            return new ResponseEntity<>(recettes, HttpStatus.OK);
+        } catch(Exception e){
+            String errorMessage = "Une erreur est survenue lors de la recherche des recettes : " + e.getMessage();
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

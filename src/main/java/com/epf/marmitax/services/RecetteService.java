@@ -83,6 +83,14 @@ public class RecetteService {
         return RecetteMapper.toDto(recette);
     }
 
+    public List<RecetteDto> searchByNom(String query) {
+        return recetteDao
+                .findByNomRecetteContainingIgnoreCaseAndApprovalStatus(query, ApprovalStatus.APPROVED)
+                .stream()
+                .map(RecetteMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     public List<RecetteDto> findAllPending() {
         return recetteDao.findAllByApprovalStatus(ApprovalStatus.PENDING)
             .stream()

@@ -10,5 +10,6 @@ import com.epf.marmitax.models.Recette;
 public interface RecetteDao extends JpaRepository<Recette, Long>{
 
     List<Recette> findAllByApprovalStatus(ApprovalStatus approvalStatus);
+    List<Recette> findByNomRecetteContainingIgnoreCaseAndApprovalStatus(String nomRecette, ApprovalStatus status);
     
 }
