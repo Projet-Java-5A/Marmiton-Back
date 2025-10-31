@@ -45,4 +45,15 @@ public class RecetteMapper {
             .approvalStatus(recette.getApprovalStatus())
             .build();
     }
+
+    public static void updateFromDto(RecetteDto dto, Recette recette) {
+        recette.setNomRecette(dto.nomRecetteDto());
+        recette.setDureeRecette(dto.dureeRecetteDto());
+        recette.setDifficulteRecette(dto.difficulteRecetteDto());
+        recette.setPrixRecette(dto.prixRecetteDto());
+        recette.setImageRecette(dto.imageRecetteDto());
+        recette.setContenuRecette(dto.contenuRecetteDto());
+        // Note: La gestion des listes (ingrédients, ustensiles) est plus complexe
+        // et n'est pas incluse ici. Elle nécessite une logique de synchronisation.
+    }
 }

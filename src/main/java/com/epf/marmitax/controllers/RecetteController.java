@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.epf.marmitax.DTO.RecetteCreateDTO;
 import com.epf.marmitax.DTO.RecetteDto;
+import com.epf.marmitax.DTO.StatusUpdateDto;
 import com.epf.marmitax.models.ApprovalStatus;
 import com.epf.marmitax.services.RecetteService;
 
@@ -75,9 +76,9 @@ public class RecetteController {
     }
 
     @PutMapping("/admin/{id}/status")
-    public ResponseEntity<?> updateRecetteStatus(@PathVariable Long id, @RequestBody ApprovalStatus status) {
+    public ResponseEntity<?> updateRecetteStatus(@PathVariable Long id, @RequestBody StatusUpdateDto statusDto) {
         try {
-            recetteService.updateRecetteStatus(id, status);
+            recetteService.updateRecetteStatus(id, statusDto.getStatus());
             return new ResponseEntity<>("Statut de la recette mis à jour.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Erreur lors de la mise à jour du statut: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

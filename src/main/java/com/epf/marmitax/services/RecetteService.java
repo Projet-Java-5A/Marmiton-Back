@@ -133,9 +133,8 @@ public class RecetteService {
 
     @Transactional
     public void updateRecette(RecetteDto recetteDto, Long id) {
-        recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
-        Recette recette;
-        recette = RecetteMapper.fromDto(recetteDto);
+        Recette recette = recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
+        RecetteMapper.updateFromDto(recetteDto, recette);
         recetteDao.save(recette);
     }
 
