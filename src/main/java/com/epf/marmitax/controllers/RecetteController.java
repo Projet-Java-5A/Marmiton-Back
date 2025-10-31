@@ -49,10 +49,14 @@ public class RecetteController {
     public ResponseEntity<?> addRecette(@RequestBody RecetteCreateDTO recetteCreateDTO) {
         try {
             recetteService.createRecette(recetteCreateDTO);
-            return new ResponseEntity<>("Recette créée, en attente de validation.", HttpStatus.CREATED);
+            java.util.Map<String, String> response = new java.util.HashMap<>();
+            response.put("message", "Recette créée, en attente de validation.");
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la création de la recette : " + e.getMessage();
-            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+            java.util.Map<String, String> errorResponse = new java.util.HashMap<>();
+            errorResponse.put("error", errorMessage);
+            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
