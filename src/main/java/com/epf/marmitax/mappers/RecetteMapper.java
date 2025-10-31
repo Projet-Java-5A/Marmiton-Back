@@ -43,6 +43,8 @@ public class RecetteMapper {
             .imageRecetteDto(recette.getImageRecette())
             .contenuRecetteDto(recette.getContenuRecette())
             .approvalStatus(recette.getApprovalStatus())
+            .nomAuteur(recette.getUtilisateurs().getNomUser())
+            .prenomAuteur(recette.getUtilisateurs().getPrenomUser())
             .build();
     }
 

@@ -16,5 +16,7 @@ public record RecetteDto(
     Integer prixRecetteDto,
     String imageRecetteDto,
     String contenuRecetteDto,
-    ApprovalStatus approvalStatus
+    ApprovalStatus approvalStatus,
+    String nomAuteur,
+    String prenomAuteur
 ){}
