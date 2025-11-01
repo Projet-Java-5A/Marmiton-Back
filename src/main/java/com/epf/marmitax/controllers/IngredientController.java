@@ -66,9 +66,9 @@ public class IngredientController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateIngredient(@RequestBody IngredientDto ingredientDto, @PathVariable Long id) {
+    public ResponseEntity<?> updateIngredient(@PathVariable Long id, @RequestBody IngredientCreateDTO ingredientDto) {
         try {
-            ingredientService.updateIngredient(ingredientDto);
+            ingredientService.updateIngredient(id, ingredientDto);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la modification de l'ingrédient : " + e.getMessage();

@@ -72,10 +72,15 @@ public class IngredientService {
     }
 
     @Transactional
-    public void updateIngredient(IngredientDto ingredientDto) {
-        ingredientDao.findById(ingredientDto.idIngredientDto()).orElseThrow(() -> new NoSuchElementException("L'ingrédient n'existe pas Evannnnnnnnnnnnn"));
-        Ingredient ingredient;
-        ingredient = IngredientMapper.fromDto(ingredientDto);
+    public void updateIngredient(Long id, IngredientCreateDTO ingredientDto) {
+        Ingredient ingredient = ingredientDao.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("L'ingrédient avec l'ID " + id + " n'existe pas."));
+
+        Categorie categorie = categorieDao.findById(ingredientDto.getIdCategorie().longValue())
+                .orElseThrow(() -> new NoSuchElementException("La catégorie n'existe pas"));
+
+        ingredient.setNomIngredient(ingredientDto.getNomIngredient());
+        ingredient.setCategorie_ingredient(categorie);
         ingredientDao.save(ingredient);
     }
 
