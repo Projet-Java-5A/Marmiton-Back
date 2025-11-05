@@ -1,7 +1,6 @@
 package com.epf.marmitax.mappers;
 
 import java.util.stream.Collectors;
-
 import com.epf.marmitax.DTO.IngredientDetailsDto;
 import com.epf.marmitax.DTO.RecetteDto;
 import com.epf.marmitax.models.Ingredient;
@@ -12,7 +11,6 @@ public class RecetteMapper {
         return Recette.builder()
             .idRecette(dto.idRecetteDto())
             .nomRecette(dto.nomRecetteDto())
-            // .ingredients(dto.ingredientsDto().stream().map(IngredientMapper::fromDto).collect(Collectors.toList()))
             .ustensiles(dto.ustensilesDto().stream().map(UstensileMapper::fromDto).collect(Collectors.toList()))
             .dureeRecette(dto.dureeRecetteDto())
             .difficulteRecette(dto.difficulteRecetteDto())
@@ -49,13 +47,5 @@ public class RecetteMapper {
     }
 
     public static void updateFromDto(RecetteDto dto, Recette recette) {
-        recette.setNomRecette(dto.nomRecetteDto());
-        recette.setDureeRecette(dto.dureeRecetteDto());
-        recette.setDifficulteRecette(dto.difficulteRecetteDto());
-        recette.setPrixRecette(dto.prixRecetteDto());
-        recette.setImageRecette(dto.imageRecetteDto());
-        recette.setContenuRecette(dto.contenuRecetteDto());
-        // Note: La gestion des listes (ingrédients, ustensiles) est plus complexe
-        // et n'est pas incluse ici. Elle nécessite une logique de synchronisation.
     }
 }

@@ -6,7 +6,10 @@ import com.epf.marmitax.DAO.UstensileDao;
 import com.epf.marmitax.DTO.IngredientQuantiteDTO;
 import com.epf.marmitax.DTO.RecetteCreateDTO;
 import com.epf.marmitax.models.*;
+import com.epf.marmitax.mappers.UstensileMapper;
 import org.springframework.stereotype.Service;
+import java.util.Set;
+import java.util.HashSet;
 
 import com.epf.marmitax.DAO.RecetteDao;
 import com.epf.marmitax.DTO.RecetteDto;
@@ -14,10 +17,8 @@ import com.epf.marmitax.mappers.RecetteMapper;
 
 import jakarta.transaction.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -134,7 +135,45 @@ public class RecetteService {
     @Transactional
     public void updateRecette(RecetteDto recetteDto, Long id) {
         Recette recette = recetteDao.findById(id).orElseThrow(() -> new NoSuchElementException("La recette n'existe pas"));
-        RecetteMapper.updateFromDto(recetteDto, recette);
+        
+        recette.setNomRecette(recetteDto.nomRecetteDto());
+        recette.setDureeRecette(recetteDto.dureeRecetteDto());
+        recette.setDifficulteRecette(recetteDto.difficulteRecetteDto());
+        recette.setPrixRecette(recetteDto.prixRecetteDto());
+        recette.setImageRecette(recetteDto.imageRecetteDto());
+        recette.setContenuRecette(recetteDto.contenuRecetteDto());
+
+        recetteDao.save(recette);
+        
+        Set<RecetteIngredient> newIngredients = new HashSet<>();
+        
+        recetteDto.ingredientsDto().forEach(ingredientDto -> {
+            Ingredient ingredient = ingredientDao.findById(ingredientDto.id())
+                .orElseThrow(() -> new NoSuchElementException("Ingredient non trouvé: " + ingredientDto.id()));
+            
+            RecetteIngredient recetteIngredient = new RecetteIngredient();
+            recetteIngredient.setRecette(recette);
+            recetteIngredient.setIngredient(ingredient);
+            recetteIngredient.setQuantite(ingredientDto.quantite());
+            
+            RecetteIngredientId compositeId = new RecetteIngredientId(recette.getIdRecette(), ingredient.getIdIngredient());
+            recetteIngredient.setId(compositeId);
+            
+            newIngredients.add(recetteIngredient);
+        });
+        
+        recette.getRecetteIngredients().clear();
+        recette.getRecetteIngredients().addAll(newIngredients);
+        
+        if (recetteDto.ustensilesDto() != null) {
+            List<Ustensile> ustensiles = recetteDto.ustensilesDto().stream()
+                .map(UstensileMapper::fromDto)
+                .map(u -> ustensileDao.findById(u.getIdUstensile())
+                    .orElseThrow(() -> new NoSuchElementException("Ustensile non trouvé")))
+                .collect(Collectors.toList());
+            recette.setUstensiles(ustensiles);
+        }
+        
         recetteDao.save(recette);
     }
 
