@@ -74,9 +74,6 @@ public class UserService {
     public UserDto loginUser(String mailUser, String mdpUser) throws AuthenticationException {
         User user = userDao.findByMailUser(mailUser)
             .orElseThrow(() -> new AuthenticationException("User not found"));
-
-        // ATTENTION: Comparaison de mot de passe en clair. C'est une faille de sécurité majeure.
-        // Il est impératif de remplacer ceci par une vérification de mot de passe haché (ex: BCrypt).
         if (!user.getMdpUser().equals(mdpUser)) {
             throw new AuthenticationException("Invalid password");
         }

@@ -50,7 +50,7 @@ public class IngredientService {
                 .orElseThrow();
     }
 
-    @Transactional // Réalisé par une transaction
+    @Transactional
     public void deleteById(Long id){
         ingredientDao.deleteById(id);
     }
@@ -65,7 +65,6 @@ public class IngredientService {
     public IngredientListDTO saveIngredientFromDto(IngredientCreateDTO ingredientDto) {
         Ingredient ingredient = new Ingredient();
         ingredient.setNomIngredient(ingredientDto.getNomIngredient());
-        // If no category provided, leave it null
         if (ingredientDto.getIdCategorie() != null) {
             Categorie categorie = categorieDao.findById(ingredientDto.getIdCategorie().longValue())
                     .orElseThrow(() -> new NoSuchElementException("La catégorie n'existe pas"));
@@ -89,9 +88,4 @@ public class IngredientService {
         ingredient.setCategorie_ingredient(categorie);
         ingredientDao.save(ingredient);
     }
-
-    // TODO Rechercher un ingrédient par catégorie
-//    public List<Ingredient> searchByCategorie(int categorieId) {
-//        return ingredientDao.findAllByCategorie_ingredientEquals(categorieId);
-//    }
 }

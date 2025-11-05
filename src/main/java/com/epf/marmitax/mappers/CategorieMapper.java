@@ -15,7 +15,6 @@ public class CategorieMapper {
 
     public static CategorieSimpleDto toSimpleDto(Categorie categorie){
         if (categorie == null) {
-            // Return an empty/simple DTO when no category is set to avoid NPEs in callers
             return new CategorieSimpleDto(0L, "");
         }
         return CategorieSimpleDto.builder()

@@ -26,7 +26,7 @@ public class IngredientController {
         try {
             List<IngredientListDTO> ingredients =  ingredientService.findAllSimple();
             return new ResponseEntity<>(ingredients, HttpStatus.OK);
-        } catch(Exception e){// TODO mieux définir les erreurs
+        } catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la récupération des ingrédients : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -37,7 +37,7 @@ public class IngredientController {
         try {
             IngredientDto ingredient = ingredientService.getById(id);
             return new ResponseEntity<>(ingredient, HttpStatus.OK);
-        } catch(Exception e){// TODO mieux définir les erreurs
+        } catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la récupération de l'ingrédient : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -48,7 +48,7 @@ public class IngredientController {
         try {
             ingredientService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch(Exception e){// TODO mieux définir les erreurs
+        } catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la suppression de l'ingrédient : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -59,7 +59,7 @@ public class IngredientController {
         try {
             IngredientListDTO created = ingredientService.saveIngredientFromDto(ingredientDto);
             return new ResponseEntity<>(created, HttpStatus.CREATED);
-        } catch(Exception e){// TODO mieux définir les erreurs
+        } catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la création de l'ingrédient : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -70,7 +70,7 @@ public class IngredientController {
         try {
             ingredientService.updateIngredient(id, ingredientDto);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch(Exception e){// TODO mieux définir les erreurs
+        } catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la modification de l'ingrédient : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }

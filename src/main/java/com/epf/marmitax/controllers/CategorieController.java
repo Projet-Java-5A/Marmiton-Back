@@ -26,7 +26,7 @@ public class CategorieController {
             List<CategorieDto> categories = categorieService.findAll();
             return new ResponseEntity<>(categories, HttpStatus.OK);
         }
-        catch(Exception e){// TODO mieux définir les erreurs
+        catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la récupération des catégories : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -39,7 +39,7 @@ public class CategorieController {
             CategorieSimpleDto categorie = categorieService.getById(id);
             return new ResponseEntity<>(categorie, HttpStatus.OK);
         }
-        catch(Exception e){// TODO mieux définir les erreurs
+        catch(Exception e){
             String errorMessage = "Une erreur est survenue lors de la récupération de la catégorie : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -50,7 +50,7 @@ public class CategorieController {
         try {
             categorieService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {// TODO mieux définir les erreurs
+        } catch (Exception e) {
             String errorMessage = "Une erreur est survenue lors de la suppression de la catégorie : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -61,7 +61,7 @@ public class CategorieController {
         try {
             categorieService.addCategorie(categorieDto);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {// TODO mieux définir les erreurs
+        } catch (Exception e) {
             String errorMessage = "Une erreur est survenue lors de la création de la catégorie : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -72,7 +72,7 @@ public class CategorieController {
         try {
             categorieService.updateCategorie(categorieDto);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {// TODO mieux définir les erreurs
+        } catch (Exception e) {
             String errorMessage = "Une erreur est survenue lors de la modification de la catégorie : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
         }

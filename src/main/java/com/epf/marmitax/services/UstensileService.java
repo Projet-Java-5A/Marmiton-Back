@@ -56,8 +56,4 @@ public class UstensileService {
         ustensileDao.save(ustensile);
     }
 
-    // TODO Rechercher une ustensile par catégorie
-    // public List<Ustensile> searchByCategorie(int categorieId) {
-    //    return ustensileDao.findByCategorieId(categorieId);
-    //}
 }

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import com.epf.marmitax.DTO.RecetteCreateDTO;
 import com.epf.marmitax.DTO.RecetteDto;
 import com.epf.marmitax.DTO.StatusUpdateDto;
-import com.epf.marmitax.models.ApprovalStatus;
 import com.epf.marmitax.services.RecetteService;
 
 import java.util.List;
@@ -22,7 +21,6 @@ public class RecetteController {
         this.recetteService = recetteService;
     }
 
-    // Endpoints Publics
     @GetMapping("")
     public ResponseEntity<?> getAllPublicRecettes() {
         try {
@@ -60,7 +58,6 @@ public class RecetteController {
         }
     }
 
-    // Endpoints Admin
     @GetMapping("/admin/pending")
     public ResponseEntity<List<RecetteDto>> getAllPendingRecettes() {
         List<RecetteDto> recettes = recetteService.findAllPending();
@@ -114,8 +111,6 @@ public class RecetteController {
     @GetMapping("/search")
     public ResponseEntity<?> searchRecettes(@RequestParam("search") String query) {
         try {
-            // On suppose que votre RecetteService a une méthode pour chercher par nom.
-            // Le nom de la méthode peut varier (ex: search, findByNom, etc.)
             List<RecetteDto> recettes = recetteService.searchByNom(query);
             return new ResponseEntity<>(recettes, HttpStatus.OK);
         } catch(Exception e){
