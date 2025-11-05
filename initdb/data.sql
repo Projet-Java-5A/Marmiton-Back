@@ -1,7 +1,7 @@
 -- Populate utilisateurs
 INSERT INTO utilisateurs (id_user, is_admin, nom_user, prenom_user, mail_user, mdp_user) VALUES
 (1, true, 'ABDELLI', 'Arthur', 'arthur@arthur', 'arthur'),
-(2, false, 'ABDELLI', 'Younes', 'younes@younes', 'younes');
+(2, false, 'ABDELLI', 'Younes', 'younes@younes', 'younes'),
 (3, false, 'MARTIN', 'Léa', 'lea@martin.fr', 'leamartin'),
 (4, true, 'SEGOUIN', 'Lou', 'lou@lou', 'loulou'),
 (5, false, 'PASTEAU', 'Evan', 'evan@evan', 'evannn');
@@ -41,7 +41,7 @@ INSERT INTO ingredient (id_ingredient, nom_ingredient, id_categorie) VALUES
 (22, 'Boeuf haché', 3),
 (23, 'Lasagnes', 6),
 (24, 'Sauce tomate', 4),
-(25, 'Béchamel', 4);
+(25, 'Béchamel', 4),
 (26, 'Pâte brisée', 6),
 (27, 'Noix de muscade', 4),
 (28, 'Pomme de terre', 2),
@@ -82,7 +82,7 @@ INSERT INTO ustensile (id_ustensile, nom_ustensile) VALUES
 (6, 'Spatule'),
 (7, 'Saladier'),
 (8, 'Presse-ail'),
-(9, 'Plat à gratin');
+(9, 'Plat à gratin'),
 (10, 'Moule à tarte'),
 (11, 'Fouet'),
 (12, 'Économe'),
@@ -97,7 +97,7 @@ INSERT INTO recette (id_recette, nom_recette, contenu_recette, image_recette, di
 (1, 'tarte à la carotte', 'Première étape : éplucher les carottes ...', 'https://uneplumedanslacuisine.com/wp-content/uploads/2015/07/Tarte-aux-carottes-30-1.jpg', 1, 45, 10, 1, 'APPROVED'),
 (2, 'Pâtes à la carbonara', 'Faire cuire les pâtes. Faire revenir les lardons et l''oignon. Mélanger les oeufs, le fromage et la crème. Ajouter les pâtes et les lardons. Servir chaud.', 'https://assets.afcdn.com/recipe/20160401/465_w600.jpg', 2, 20, 5, 1, 'APPROVED'),
 (3, 'Poulet au curry', 'Faire dorer le poulet. Ajouter l''oignon, l''ail et le curry. Verser le lait de coco et laisser mijoter. Servir avec du riz.', 'https://www.etal-des-epices.com/wp-content/uploads/2023/11/poulet-curry-coco.jpg', 2, 30, 12, 2, 'APPROVED'),
-(4, 'Lasagnes à la bolognaise', 'Préparer la sauce bolognaise avec le boeuf haché, la sauce tomate, l''oignon et l''ail. Monter les lasagnes en alternant couches de pâtes, de bolognaise et de béchamel. Terminer par du fromage. Enfourner 30 minutes.', 'https://ets-drap.com/wp-content/uploads/2019/04/Lasagne-maison-avec-sauce-Bolognaise-DRAP.jpg', 3, 60, 15, 1, 'APPROVED');
+(4, 'Lasagnes à la bolognaise', 'Préparer la sauce bolognaise avec le boeuf haché, la sauce tomate, l''oignon et l''ail. Monter les lasagnes en alternant couches de pâtes, de bolognaise et de béchamel. Terminer par du fromage. Enfourner 30 minutes.', 'https://ets-drap.com/wp-content/uploads/2019/04/Lasagne-maison-avec-sauce-Bolognaise-DRAP.jpg', 3, 60, 15, 1, 'APPROVED'),
 (5, 'Quiche Lorraine', 'Préchauffer le four à 180°C. Étaler la pâte brisée dans un moule à tarte. Faire dorer les lardons à la poêle. Dans un saladier, battre les oeufs avec la crème fraîche, le sel, le poivre et la muscade. Ajouter les lardons et le fromage râpé. Verser la préparation sur la pâte. Enfourner pour 30-35 minutes.', 'url_image_quiche', 2, 45, 8, 3, 'APPROVED'),
 (6, 'Gratin Dauphinois', 'Préchauffer le four à 160°C. Éplucher et couper les pommes de terre en fines rondelles. Frotter un plat à gratin avec une gousse d''ail. Disposer les rondelles de pommes de terre dans le plat. Dans une casserole, faire chauffer le lait, la crème, le sel, le poivre et la muscade. Verser sur les pommes de terre. Parsemer de noisettes de beurre. Enfourner pour 1h30.', 'url_image_gratin', 2, 110, 9, 4, 'APPROVED'),
 (7, 'Hachis Parmentier', 'Faire cuire les pommes de terre et les écraser en purée avec du lait et du beurre. Saler, poivrer. Faire revenir l''oignon et l''ail hachés, puis ajouter le boeuf haché et la sauce tomate. Laisser mijoter. Dans un plat à gratin, étaler une couche de viande puis recouvrir de purée. Strier avec une fourchette et parsemer de chapelure. Enfourner 20 minutes à 200°C.', 'url_image_hachis', 2, 50, 11, 5, 'APPROVED'),
@@ -115,7 +115,7 @@ INSERT INTO utiliser (id_recette, id_ustensile) VALUES
 (1, 1),
 (2, 4), (2, 5), (2, 6), (2, 7),
 (3, 4), (3, 5), (3, 6), (3, 8),
-(4, 4), (4, 5), (4, 6), (4, 9);
+(4, 4), (4, 5), (4, 6), (4, 9),
 (5, 1), (5, 5), (5, 7), (5, 10), (5, 11), 
 (6, 1), (6, 4), (6, 8), (6, 12), (6, 14),
 (7, 4), (7, 5), (7, 14), (7, 15), (7, 16), 
@@ -133,7 +133,7 @@ INSERT INTO recette_ingredient (id_recette, id_ingredient, quantite) VALUES
 (1, 1, '500g'), (1, 6, '1 pincée'),
 (2, 8, '400g'), (2, 11, '200g'), (2, 9, '2'), (2, 10, '100g'), (2, 12, '1'), (2, 6, '1 pincée'),
 (3, 16, '500g'), (3, 17, '250g'), (3, 12, '1'), (3, 13, '2 gousses'), (3, 14, '2 cuillères à soupe'), (3, 15, '20cl'), (3, 18, '2 cuillères à café'), (3, 19, '20cl'),
-(4, 23, '1 paquet'), (4, 22, '500g'), (4, 24, '500g'), (4, 12, '1'), (4, 13, '2 gousses'), (4, 14, '2 cuillères à soupe'), (4, 25, '50cl'), (4, 10, '150g');
+(4, 23, '1 paquet'), (4, 22, '500g'), (4, 24, '500g'), (4, 12, '1'), (4, 13, '2 gousses'), (4, 14, '2 cuillères à soupe'), (4, 25, '50cl'), (4, 10, '150g'),
 (5, 26, '1'), (5, 11, '200g'), (5, 9, '3'), (5, 15, '20cl'), (5, 10, '150g'), (5, 54, '1 pincée'), (5, 6, '1 pincée'), (5, 27, '1 pincée'),
 (6, 28, '1.5kg'), (6, 13, '2 gousses'), (6, 29, '50cl'), (6, 15, '50cl'), (6, 30, '50g'), (6, 54, 'sel'), (6, 6, 'poivre'), (6, 27, '1 pincée'),
 (7, 28, '1kg'), (7, 22, '500g'), (7, 12, '1'), (7, 13, '1 gousse'), (7, 24, '200g'), (7, 29, '20cl'), (7, 30, '40g'), (7, 31, '3 cuillères à soupe'),
