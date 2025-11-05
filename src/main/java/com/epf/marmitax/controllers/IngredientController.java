@@ -57,8 +57,8 @@ public class IngredientController {
     @PostMapping("")
     public ResponseEntity<?> addIngredient(@RequestBody IngredientCreateDTO ingredientDto) {
         try {
-            ingredientService.saveIngredientFromDto(ingredientDto);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            IngredientListDTO created = ingredientService.saveIngredientFromDto(ingredientDto);
+            return new ResponseEntity<>(created, HttpStatus.CREATED);
         } catch(Exception e){// TODO mieux définir les erreurs
             String errorMessage = "Une erreur est survenue lors de la création de l'ingrédient : " + e.getMessage();
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);

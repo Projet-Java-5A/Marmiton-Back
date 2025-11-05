@@ -62,13 +62,19 @@ public class IngredientService {
     }
 
     @Transactional
-    public void saveIngredientFromDto(IngredientCreateDTO ingredientDto) {
-        Categorie categorie = categorieDao.findById(ingredientDto.getIdCategorie().longValue())
-                .orElseThrow(() -> new NoSuchElementException("La catégorie n'existe pas"));
+    public IngredientListDTO saveIngredientFromDto(IngredientCreateDTO ingredientDto) {
         Ingredient ingredient = new Ingredient();
         ingredient.setNomIngredient(ingredientDto.getNomIngredient());
-        ingredient.setCategorie_ingredient(categorie);
-        ingredientDao.save(ingredient);
+        // If no category provided, leave it null
+        if (ingredientDto.getIdCategorie() != null) {
+            Categorie categorie = categorieDao.findById(ingredientDto.getIdCategorie().longValue())
+                    .orElseThrow(() -> new NoSuchElementException("La catégorie n'existe pas"));
+            ingredient.setCategorie_ingredient(categorie);
+        } else {
+            ingredient.setCategorie_ingredient(null);
+        }
+        Ingredient saved = ingredientDao.save(ingredient);
+        return IngredientMapper.toListDto(saved);
     }
 
     @Transactional
