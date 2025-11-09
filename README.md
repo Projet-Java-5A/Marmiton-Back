@@ -3,12 +3,20 @@
 ## Les installations nécessaire
 
 - Java 21
-- Angular : `npm install -g @angular/cli`
 
 ## Avant de lancer le projet
 
-Lancer `npm i`
+Créer et remplire le .env à partir du message moodle.
+La base de données se crée avec docker :
+
+```bash
+docker compose up -d
+```
 
 ## Pour lancer le projet
 
-Lancer `npm start` et se rendre sur `http://localhost:4200/`
+```java
+mvn spring-boot:run
+```
+
+Se rendre sur `http://localhost:8080/swagger-ui/index.html` pour le swagger
