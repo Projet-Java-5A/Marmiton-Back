@@ -97,7 +97,7 @@ public class RecetteController {
         }
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateRecette(@RequestBody RecetteDto recetteDto, @PathVariable Long id) {
         try {
             recetteService.updateRecette(recetteDto, id);
