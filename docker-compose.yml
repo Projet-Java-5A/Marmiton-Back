@@ -1,9 +1,7 @@
-version: '3.1'
 services:
   database:
-    container_name: Marmitax_db
     image: postgres
-    restart: always
+    container_name: Marmitax_db
     env_file:
       - .env
     environment:

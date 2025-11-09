@@ -19,7 +19,7 @@ public class BackSkeletonApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:4173") // Frontend origin
+						.allowedOrigins("http://localhost:4173", "http://localhost:4200") // Allowed frontend origins
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 						.allowedHeaders("*")
 						.allowCredentials(true);
